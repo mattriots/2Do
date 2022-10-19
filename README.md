@@ -12,6 +12,8 @@ For anyone who wants to maximize their work/life balance.
 
 https://www.figma.com/file/uHDBQEXPRQJdATXyNeKNJw/2Do_307?node-id=0%3A1
 
+### `Project Workflow`
+https://github.com/users/mattriots/projects/2
 
 ###  `Project Detail`
 
