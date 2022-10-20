@@ -1,25 +1,37 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema(
+const TaskSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
+    isCompleted: {
+      type: Boolean,
       required: true,
-      trim: true,
     },
-    job: {
+    title: {
       type: String,
       required: true,
       trim: true,
       validate(value) {
         if (value.length < 2)
-          throw new Error("Invalid job, must be at least 2 characters.");
+          throw new Error(
+            "Invalid title, must be at least 2 characters."
+          );
+      },
+    },
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+      validate(value) {
+        if (value.length < 2)
+          throw new Error(
+            "Invalid description, must be at least 2 characters."
+          );
       },
     },
   },
-  { collection: "users_list" }
+  { collection: "tasks" }
 );
 
-const User = mongoose.model("User", UserSchema);
+const Task = mongoose.model("Task", TaskSchema);
 
-module.exports = User;
+module.exports = Task;

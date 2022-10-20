@@ -1,6 +1,14 @@
 const mongoose = require("mongoose");
-const userModel = require("./user");
+const taskModel = require("./task");
 const dotenv = require("dotenv")
+
+
+
+
+// READ THISSSSSSSS ///
+//Working through transfering this over to tasks
+// NEed to connect it to backend.js and make sure that is all transfered over too
+// THEN we can try to connect to database
 
 dotenv.config({
   path: "/home/martog/code/learning/school/CSC307/2Do/.env",
@@ -25,11 +33,11 @@ mongoose
   })
   .catch((error) => console.log(error));
 
-async function getUsers(name, job) {
+async function getTasks(id, title) {
   let result;
-  if (name === undefined && job === undefined) {
-    result = await userModel.find();
-  } else if (name && !job) {
+  if (id  === undefined && title === undefined) {
+    result = await taskModel.find();
+  } else if (id && !title) {
     result = await findUserByName(name);
   } else if (job && !name) {
     result = await findUserByJob(job);
@@ -39,49 +47,53 @@ async function getUsers(name, job) {
   return result;
 }
 
-async function findUserById(id) {
+async function findTaskById(id) {
   try {
     console.log(id)
-    return await userModel.findById(id);
+    return await taskModel.findById(id);
   } catch (error) {
     console.log(error);
     return undefined;
   }
 }
 
-async function addUser(user) {
+async function addTask(title, desc) {
   try {
-    const userToAdd = new userModel(user);
-    const savedUser = await userToAdd.save();
-    return savedUser;
+    const taskToAdd = new taskModel(title, desc);
+    const savedTask = await taskToAdd.save();
+    return savedTask;
   } catch (error) {
     console.log(error);
     return false;
   }
 }
 
-async function deleteUser(id) {
+async function deleteTask(id) {
   try {
-    return await userModel.findByIdAndDelete(id);
+    return await taskModel.findByIdAndDelete(id);
   } catch (error) {
     console.log(error);
     return undefined;
   }
 }
 
-async function findUserByName(name) {
-  return await userModel.find({ name: name });
+async function findtaskbyIsCompleted(isCompleted) {
+  return await taskModel.find({ isCompleted: isCompleted });
 }
 
-async function findUserByJob(job) {
-  return await userModel.find({ job: job });
-}
+// async function findUserByName(name) {
+//   return await userModel.find({ name: name });
+// }
 
-async function findUserByNameAndJob(name, job) {
-  return await userModel.find({ name: name, job: job });
-}
+// async function findUserByJob(job) {
+//   return await userModel.find({ job: job });
+// }
 
-exports.getUsers = getUsers;
-exports.findUserById = findUserById;
-exports.addUser = addUser;
-exports.deleteUser = deleteUser;
+// async function findUserByNameAndJob(name, job) {
+//   return await userModel.find({ name: name, job: job });
+// }
+
+exports.getTasks = getTasks;
+exports.findTaskById = findTaskById;
+exports.addTask = addTask;
+exports.deleteTask = deleteTask;
