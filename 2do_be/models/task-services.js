@@ -6,8 +6,8 @@ const dotenv = require("dotenv")
 
 
 // READ THISSSSSSSS ///
-//Working through transfering this over to tasks
-// NEed to connect it to backend.js and make sure that is all transfered over too
+// Working through transfering this over to tasks
+// Need to connect it to backend.js and make sure that is all transfered over too
 // THEN we can try to connect to database
 
 dotenv.config({
@@ -33,16 +33,17 @@ mongoose
   })
   .catch((error) => console.log(error));
 
-async function getTasks(id, title) {
+async function getTasks(status, title) {
   let result;
-  if (id  === undefined && title === undefined) {
+  if (status  === undefined && title === undefined) { // Returns all tasks?
     result = await taskModel.find();
-  } else if (id && !title) {
-    result = await findUserByName(name);
-  } else if (job && !name) {
-    result = await findUserByJob(job);
+  } else if (status && !title) {
+    result = await findTaskByStatus(status); //Returns just tasks with certain status: Complete, in progress?
+  } else if (!status && title) {
+    result = await findTaskByTitle(title);
   } else {
-    result = await findUserByNameAndJob(name, job);
+    result = await findTaskByStatusAndTitle(status, title); //Would we ever need to find task by status and title?
+                                                              //Maybe task that is in progress and contains certain text
   }
   return result;
 }
@@ -77,8 +78,12 @@ async function deleteTask(id) {
   }
 }
 
-async function findtaskbyIsCompleted(isCompleted) {
-  return await taskModel.find({ isCompleted: isCompleted });
+async function findTaskByStatus(status) {
+  return await taskModel.find({ status: status });
+}
+//How do we return a task that contains the "title"
+async function findTaskByStatusAndTitle(status, title) {
+  return await userModel.find({ status: status, title: title });
 }
 
 // async function findUserByName(name) {

@@ -2,9 +2,14 @@ const mongoose = require("mongoose");
 
 const TaskSchema = new mongoose.Schema(
   {
-    isCompleted: {
-      type: Boolean,
+    status: {
+      type: String,
       required: true,
+      trim: true,
+      validate(value) {
+        if (value.length < 2)
+          throw new Error("Invalid title, must be at least 2 characters.");
+      },
     },
     title: {
       type: String,
@@ -12,9 +17,7 @@ const TaskSchema = new mongoose.Schema(
       trim: true,
       validate(value) {
         if (value.length < 2)
-          throw new Error(
-            "Invalid title, must be at least 2 characters."
-          );
+          throw new Error("Invalid title, must be at least 2 characters.");
       },
     },
     description: {
