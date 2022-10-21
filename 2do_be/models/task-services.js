@@ -44,6 +44,7 @@ async function getTasks(status, title) {
   } else {
     result = await findTaskByStatusAndTitle(status, title); //Would we ever need to find task by status and title?
                                                               //Maybe task that is in progress and contains certain text
+                                                              //Could make this a category instead!
   }
   return result;
 }
@@ -86,19 +87,10 @@ async function findTaskByStatusAndTitle(status, title) {
   return await userModel.find({ status: status, title: title });
 }
 
-// async function findUserByName(name) {
-//   return await userModel.find({ name: name });
-// }
-
-// async function findUserByJob(job) {
-//   return await userModel.find({ job: job });
-// }
-
-// async function findUserByNameAndJob(name, job) {
-//   return await userModel.find({ name: name, job: job });
-// }
 
 exports.getTasks = getTasks;
 exports.findTaskById = findTaskById;
+exports.findTaskByStatus = findTaskByStatus;
+exports.findTaskByStatusAndTitle = findTaskByStatusAndTitle;
 exports.addTask = addTask;
 exports.deleteTask = deleteTask;
