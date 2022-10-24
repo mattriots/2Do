@@ -33,16 +33,16 @@ mongoose
   })
   .catch((error) => console.log(error));
 
-async function getTasks(status, title) {
+async function getTasks(status, category) {
   let result;
   if (status  === undefined && title === undefined) { // Returns all tasks?
     result = await taskModel.find();
-  } else if (status && !title) {
+  } else if (status && !category) {
     result = await findTaskByStatus(status); //Returns just tasks with certain status: Complete, in progress?
   } else if (!status && title) {
-    result = await findTaskByTitle(title);
+    result = await findTaskByCategory(category);
   } else {
-    result = await findTaskByStatusAndTitle(status, title); //Would we ever need to find task by status and title?
+    result = await findTaskByStatusAndCategory(status, category); //Would we ever need to find task by status and title?
                                                               //Maybe task that is in progress and contains certain text
                                                               //Could make this a category instead!
   }
@@ -82,15 +82,26 @@ async function deleteTask(id) {
 async function findTaskByStatus(status) {
   return await taskModel.find({ status: status });
 }
-//How do we return a task that contains the "title"
-async function findTaskByStatusAndTitle(status, title) {
-  return await userModel.find({ status: status, title: title });
+
+async function findTaskByCategory(status, category) {
+  return await userModel.find({ status: status, category: category });
+}
+
+async function findTaskByStatusAndCategory(status, category) {
+  return await userModel.find({ status: status, category: category });
 }
 
 
+async function findTaskByDate(status, category) {
+  return await userModel.find({ status: status, category: category });
+}
+
+
+
 exports.getTasks = getTasks;
-exports.findTaskById = findTaskById;
+
 exports.findTaskByStatus = findTaskByStatus;
-exports.findTaskByStatusAndTitle = findTaskByStatusAndTitle;
+exports.findTaskByStatusAndCategory = findTaskByStatusAndCategory;
+
 exports.addTask = addTask;
 exports.deleteTask = deleteTask;
