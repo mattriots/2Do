@@ -1,7 +1,7 @@
 import * as React from "react";
-import logo from "./logo_2do.png";
+import logo from "../logo_2do.png";
 import styled from "@emotion/styled";
-import Datesvg from "./svg/DatePlaceholder";
+import Datesvg from "./DatePlaceholder";
 import "./HomeView.css";
 
 const Button = styled.button`
@@ -36,11 +36,7 @@ function DateDropDown() {
 }
 
 function TextWithLogo() {
-  return (
-    <p>
-      <img src={logo} className="App-logo" />
-    </p>
-  );
+  return <img src={logo} className="App-logo" />;
 }
 
 function HomeView() {

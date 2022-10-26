@@ -1,5 +1,5 @@
 import React from "react";
-import HomeView from "./HomeView";
+import HomeView from "./Components/HomeView";
 
 function App() {
   return <HomeView />;

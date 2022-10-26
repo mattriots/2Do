@@ -40,7 +40,7 @@
 /* LOGO IN CONTAINER */
 .App-logo {
   height: 50px;
-  
+  top: -2px;
   position: relative;
 }
 
