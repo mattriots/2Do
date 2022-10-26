@@ -1,8 +1,8 @@
 import React from "react";
-import NavBar from "./components/NavBar/NavBar";
+import HomeView from "./HomeView";
 
 function App() {
-  return <NavBar />;
+  return <HomeView />;
 }
 
 export default App;

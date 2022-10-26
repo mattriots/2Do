@@ -1,0 +1,61 @@
+*{
+    margin-top: 5px;
+    padding: 0px;
+  }
+
+/*Containers*/
+  .first-container {
+    display: flex;
+    height: 50px;
+    justify-content: space-around;
+  }
+
+  .second-container {
+    display: flex;
+    margin-left: 5%;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .third-container {
+    display: flex;
+    height: 50px; 
+    justify-content: space-around;
+  }
+
+
+  /*Header Styling*/
+.header-text {
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+
+
+/* LOGO IN CONTAINER */
+.App-logo {
+  height: 50px;
+  
+  position: relative;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    position: absolute;
+  }
+}
