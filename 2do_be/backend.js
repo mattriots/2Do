@@ -1,15 +1,15 @@
 const { application, response } = require("express");
 const express = require("express");
-const userServices = require("./models/task-services");
+const taskServices = require("./models/task-services");
 const app = express();
-const port = 5001;
+const port = 5000;
 const cors = require("cors");
 
 app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello Poop!");
 });
 
 app.listen(port, () => {
@@ -18,12 +18,14 @@ app.listen(port, () => {
 
 //Get users
 
-app.get("/users", async (req, res) => {
-  const name = req.query.name;
-  const job = req.query.job;
+app.get("/tasks", async (req, res) => {
+  const status = req.query.status;
+  const title = req.query.title;
+  const description = req.query.description;
+  const dueDate = req.query.dueDate;
   try {
-      const result = await userServices.getUsers(name, job);
-      res.send({ users_list: result });
+    const result = await taskServices.getTasks(status, title, description, dueDate);
+    res.send({ tasks: result });
   } catch (error) {
     console.log(error);
     res.status(500).send("An error ocurred in the server.");
@@ -32,7 +34,7 @@ app.get("/users", async (req, res) => {
 
 app.get("/users/:id", async (req, res) => {
   const id = req.params["id"]; //or req.params.id
-  let result = await userServices.findUserById(id);
+  let result = await taskServices.findUserById(id);
   if (result === undefined || result.length == 0)
     res.status(404).send("Resource not found.");
   else {
@@ -40,18 +42,18 @@ app.get("/users/:id", async (req, res) => {
   }
 });
 
-app.post("/users", async (req, res) => {
-  const user = req.body;
-  const savedUser = await userServices.addUser(user);
-  if (savedUser) res.status(201).send(savedUser);
+app.post("/Tasks", async (req, res) => {
+  const task = req.body;
+  const savedTask = await taskServices.addTask(task);
+  if (savedTask) res.status(201).send(savedTask);
   else res.status(500).end();
 });
 
-app.delete("/users/:id", async (req, res) => {
+app.delete("/Tasks/:id", async (req, res) => {
   const id = req.params.id;
   console.log(id);
-  let userToDelete = await userServices.deleteUser(id);
-  if (userToDelete === undefined || userToDelete.length === 0)
+  let taskToDelete = await taskServices.deleteTask(id);
+  if (taskToDelete === undefined || taskToDelete.length === 0)
     res.status(404).send("Resource not found.");
   else {
     res.status(204).end();
@@ -74,64 +76,3 @@ app.delete("/users/:id", async (req, res) => {
 
 //Add user
 
-// app.post("/users", (req, res) => {
-//   const userToAdd = req.body;
-//   userToAdd.id = uniqueID().toString();
-//   addUser(userToAdd);
-//   var myJson = {};
-//   myJson.id = userToAdd.id;
-//   myJson.name = userToAdd.name;
-//   myJson.job = userToAdd.job;
-//   res.send(myJson);
-//   res.status(201).end();
-// });
-
-
-
-
-// function uniqueID() {
-//   return Math.floor(Math.random() * Date.now());
-// }
-
-// function addUser(user) {
-//   users["users_list"].push(user);
-// }
-
-//Delete user
-
-
-// function deleteUser(user) {
-//   users["users_list"] = users["users_list"].filter((e) => e["id"] != user.id);
-// }
-
-//Hardcoded users_list
-
-const users = {
-  users_list: [
-    {
-      id: "xyz789",
-      name: "Charlie",
-      job: "Janitor",
-    },
-    {
-      id: "abc123",
-      name: "Mac",
-      job: "Bouncer",
-    },
-    {
-      id: "ppp222",
-      name: "Mac",
-      job: "Professor",
-    },
-    {
-      id: "yat999",
-      name: "Dee",
-      job: "Aspring actress",
-    },
-    {
-      id: "zap555",
-      name: "Dennis",
-      job: "Bartender",
-    },
-  ],
-};
