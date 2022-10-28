@@ -3,7 +3,7 @@ const taskModel = require("./task");
 const dotenv = require("dotenv");
 
 dotenv.config({
-  path: "/home/martog/code/learning/school/CSC307/2Do/.env",
+  path: "../.env",
 });
 
 mongoose.set("debug", true);
@@ -24,27 +24,29 @@ mongoose
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }
+    
   )
   .catch((error) => console.log(error));
+  console.log(process.env.MONGO_DB)
 
-async function getTasks(status, category) {
+async function getTasks(status, title, description, dueDate) {
   let result;
   if (status === undefined && title === undefined) {
     // Returns all tasks?
     result = await taskModel.find();
-  } else if (status && !category) {
-    result = await findTaskByStatus(status); //Returns just tasks with certain status: Complete, in progress?
-  } else if (!status && title) {
-    result = await findTaskByCategory(category);
-  } else {
-    result = await findTaskByStatusAndCategory(status, category);
+  // } else if (status && !title) {
+  //   result = await findTaskByStatus(status); //Returns just tasks with certain status: Complete, in progress?
+  // } else if (!status && title) {
+  //   result = await findTaskByCategory(title);
+  // } else {
+  //   result = await findTaskByStatusAndCategory(status, title);
     return result;
   }
 }
 
-async function addTask(status, title, desc, category, dueDate) {
+async function addTask(status, title, desc, dueDate) {
   try {
-    const taskToAdd = new taskModel(status, title, desc, category, dueDate);
+    const taskToAdd = new taskModel(status, title, desc, dueDate);
     const savedTask = await taskToAdd.save();
     return savedTask;
   } catch (error) {
