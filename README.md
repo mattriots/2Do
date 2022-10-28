@@ -1,6 +1,6 @@
 # 2Do
 
-## | Matt DePauw | Sandra Lwin | Walter Toriola | Katy Tran |
+# | Matt DePauw | Sandra Lwin | Walter Toriola | Katy Tran |
 
 
 # Prettier: Code Formatter
@@ -14,8 +14,8 @@
 ## Style Guide:
 React/JavaScript [https://airbnb.io/javascript/react/]
 
-### EsLint: Find and Fix Problem in JavaScript
-#### Setup instructions:
+# EsLint: Find and Fix Problem in JavaScript
+## Setup instructions:
 - Select the extensions icon from the left side of VScode window 
 - Search for 'EsLint' and install
 - Open terminal for the desire folder with existing npm and package.json
@@ -30,7 +30,7 @@ React/JavaScript [https://airbnb.io/javascript/react/]
   - ? Would you like to install them now? >Yes
   - ? Which package manager do you want to use? >npm
 - .eslintrc.json will be created
-- replace the content in the .eslintrc.json that was created with the content in .eslintrc.json file the that is in the root folder of the repository by copy/paste. 
+- Replace the content in the .eslintrc.json that was created with the content in .eslintrc.json file the that is in the root folder of the repository by copy/paste. 
 
-### Backlog:
+# Backlog:
 https://github.com/users/mattriots/projects/2/views/1
