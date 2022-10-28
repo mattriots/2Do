@@ -20,8 +20,8 @@ React/JavaScript [https://airbnb.io/javascript/react/]
 - Open terminal for the desire folder with existing npm and package.json
 - Enter: 'npm init @eslint/config' command in terminal
 - When prompt to answer question make sure to chose the following:
-  -? How would you like to use ESLint? >To check syntax and find problem
-  -? What type of modules dows your project use? >JavaScript
+-   ? How would you like to use ESLint? >To check syntax and find problem
+-   ? What type of modules dows your project use? >JavaScript
   -? Which frameword does your project use? >React
   -? Does your project use TypeScript? >No
   -? Where does your code run? >Browser
