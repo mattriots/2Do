@@ -19,6 +19,7 @@
 
   .third-container {
     display: flex;
+    flex-direction: row;
     height: 50px; 
     justify-content: space-around;
   }
@@ -35,6 +36,27 @@
   color: rgba(0, 0, 0, 0.54);
 }
 
+.edit-task-button {
+width: 300px;
+height: 33px;
+
+border: none;
+
+display: flex;
+justify-content: center;
+
+font-family: 'Arial';
+font-style: normal;
+font-size: 20px;
+line-height: 29px;
+border-radius: 10px;
+background-color: transparent;
+}
+
+.edit-task-button:hover{
+  opacity: 100;
+  background-color: #002a96;
+}
 
 
 /* LOGO IN CONTAINER */
