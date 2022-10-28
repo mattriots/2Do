@@ -13,10 +13,10 @@ https://www.figma.com/file/uHDBQEXPRQJdATXyNeKNJw/2Do_307?node-id=0%3A1
 
 
 ###  `Project Detail`
+[To Be Updated]
 
 ### `Prettier: Code Formatter`
-
-#### `Setup Instructions`
+#### Setup Instructions
 - Select the extensions icon from the left side of your VScode window
 - Search for 'prettier' and download
 - Go to preferences > settings and search for 'prettier'
