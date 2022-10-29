@@ -31,24 +31,14 @@ const TaskSchema = new mongoose.Schema(
           );
       },
     },
-    category: {
+    //Research about making this a Date type
+    dueDate: {
       type: String,
-      default: "All", //Does this work? Default all category is all...then we can adjust/implement from there
       required: true,
       trim: true,
-      validate(value) {
-        if (value.length < 2)
-          throw new Error(
-            "Invalid description, must be at least 2 characters."
-          );
-      },
-    },
-    dueDate: {
-      type: Date,
-      required: true,
     },
   },
-  { collection: "tasks" }
+  { collection: "task_list" }
 );
 
 const Task = mongoose.model("Task", TaskSchema);
