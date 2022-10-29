@@ -2,7 +2,6 @@ import React from "react";
 import NavBar from "./Components/NavBar/NavBar";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
 import Date from "./Components/Date/Date";
 import TaskDetail from "./Components/TaskDetail/TaskDetail";
 
@@ -15,7 +14,7 @@ function App() {
           <div id="content">
             <div style={{ textAlign: "center", border: "1px solid" }}>
               <Box sx={{ flexGrow: 1 }}>
-                <div class="grid grid-cols-5 gap-2">
+                <div className="grid grid-cols-5 gap-2">
                   <div className="text-3xl py-5 justify-self-start pl-14 col-span-2">
                     Task
                   </div>
