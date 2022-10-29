@@ -1,13 +1,15 @@
 # 2Do Project
 #### | Matt DePauw | Sandra Lwin | Walter Toriola | Katy Tran |
-  
-View online at: [To Be Updated]
 
+## `Product Vision`
 For anyone who wants to maximize their work/life balance.
 2Do is an efficient and concise To-Do list that organizes daily tasks in an accessible and easy to read manner. Unlike Microsoft To Do, Our Product is lightweight, customizable, easy to manage and fun!  
 
 ## `Project Design`
 https://www.figma.com/file/uHDBQEXPRQJdATXyNeKNJw/2Do_307?node-id=0%3A1
+
+## `Backlog`
+https://github.com/users/mattriots/projects/2/views/1
 
 ## `Project Detail`
 [To Be Updated]
@@ -18,6 +20,7 @@ https://www.figma.com/file/uHDBQEXPRQJdATXyNeKNJw/2Do_307?node-id=0%3A1
 - Search for '**Prettier**' and download
 - Go to preferences > settings and search for '**Prettier**'
 - Scroll down until you see 'Config Path' and point to the '.prettierrc' that is in the root folder of the respository.
+
 ### Style Guide
 React/JavaScript [https://airbnb.io/javascript/react/]
 
@@ -39,8 +42,7 @@ React/JavaScript [https://airbnb.io/javascript/react/]
 - '.eslintrc.json' will be created
 - Replace the content in the '.eslintrc.json' that was created with the content in '.eslintrc.json' file the that is in the root folder of the repository by copy/paste. 
 
-## `Backlog`
-https://github.com/users/mattriots/projects/2/views/1
+
 
 ## `License`
 
