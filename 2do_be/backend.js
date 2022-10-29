@@ -32,7 +32,7 @@ app.get("/tasks", async (req, res) => {
   }
 });
 
-app.get("/users/:id", async (req, res) => {
+app.get("/tasks/:id", async (req, res) => {
   const id = req.params["id"]; //or req.params.id
   let result = await taskServices.findUserById(id);
   if (result === undefined || result.length == 0)
@@ -42,14 +42,14 @@ app.get("/users/:id", async (req, res) => {
   }
 });
 
-app.post("/Tasks", async (req, res) => {
+app.post("/tasks", async (req, res) => {
   const task = req.body;
   const savedTask = await taskServices.addTask(task);
   if (savedTask) res.status(201).send(savedTask);
   else res.status(500).end();
 });
 
-app.delete("/Tasks/:id", async (req, res) => {
+app.delete("/tasks/:id", async (req, res) => {
   const id = req.params.id;
   console.log(id);
   let taskToDelete = await taskServices.deleteTask(id);

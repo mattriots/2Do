@@ -23,6 +23,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# matt testing backend we can delete this later
-/react-frontend

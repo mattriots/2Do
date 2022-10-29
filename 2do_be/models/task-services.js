@@ -64,7 +64,8 @@ async function deleteTask(id) {
   }
 }
 
-//UPDATE SECTIONS //
+//Need to fix this up to align with our new approach of updating all fields
+//when updating any field in the task 
 
 async function updateTaskDescription(description, id) {
   try {
