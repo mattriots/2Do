@@ -4,6 +4,9 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Date from "./Components/Date/Date";
 import TaskDetail from "./Components/TaskDetail/TaskDetail";
+import AddTask from "./AddTask.js"
+import {openTaskDesc} from "./AddTask.js"
+import "./App.css";
 
 function App() {
   return (
@@ -33,6 +36,11 @@ function App() {
             </div>
           </div>
         </Container>
+        <button className="openButton" onClick={openTaskDesc}> + Add Task </button>
+        <div className = "addTaskPopUp">
+              <AddTask/>
+        </div>
+        
       </React.Fragment>
     </div>
   );
