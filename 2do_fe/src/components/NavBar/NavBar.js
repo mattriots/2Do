@@ -1,6 +1,6 @@
 import * as React from "react";
 import logo from "../../logo_2do.png";
-import "../../HomeView.css";
+import "../../Header.css";
 import Box from "@mui/material/Box";
 
 export default function NavBar() {
