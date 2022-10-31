@@ -1,5 +1,4 @@
 import React from "react";
-// import NavBar from "./components/NavBar/NavBar";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Date from "./components/Date/Date";
@@ -30,13 +29,6 @@ function App() {
                   </div>
                 </div>
 
-                {/* <div className="first-container">
-                  <div className="header-text">
-                    Tasks <img src={logo} className="App-logo" />
-                  </div>
-                  <div className="header-text">Due Date</div>
-                  <div className="header-text">Stage</div>
-                </div> */}
                 <Date />
                 <TaskDetail />
                 <TaskDetail />
