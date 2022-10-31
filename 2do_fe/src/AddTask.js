@@ -2,20 +2,18 @@ import React from "react";
 import logo from "./logo_2do.png";
 import "./AddTask.css";
 
-export function openTaskDesc()
-{
+export function openTaskDesc() {
   document.getElementById("popUpForm").style.display = "block";
 }
-function closeTaskDesc()
-{
+function closeTaskDesc() {
   document.getElementById("popUpForm").style.display = "none";
 }
 
 function TaskFormHeader() {
   return (
     <header className="TaskForm-header">
-      <p className="FormHeader-text">Add Task</p>
-      <button onClick = {closeTaskDesc} className="exit-button">
+      <p className="FormHeader-text">Task Details</p>
+      <button onClick={closeTaskDesc} className="exit-button">
         X
       </button>
     </header>
@@ -24,11 +22,13 @@ function TaskFormHeader() {
 
 function AddTaskLogo() {
   return (
-    <center><div id="logo-container">
-      <div className="AddTask-Logo">
-        <img src={logo} className="AddTask-logo" alt="logo" />
+    <center>
+      <div id="logo-container">
+        <div className="AddTask-Logo">
+          <img src={logo} className="AddTask-logo" alt="logo" />
+        </div>
       </div>
-    </div></center>
+    </center>
   );
 }
 
@@ -72,9 +72,9 @@ function TaskFormButtons() {
   return (
     <div className="Button-container">
       <button onClick="" className="Add-button">
-        Add
+        Confirm
       </button>
-      <button onClick= {closeTaskDesc} className="Cancel-button">
+      <button onClick={closeTaskDesc} className="Cancel-button">
         Cancel
       </button>
     </div>
@@ -82,19 +82,23 @@ function TaskFormButtons() {
 }
 
 function AddTask() {
-  return(
-    <center><div className="taskForm" id= "popUpForm">
-      <form action="" className="formContainer">
-      <h2>
-        <TaskFormHeader />
-      </h2>
-      <body> {/* className="popup" */ }
-            <AddTaskLogo/>
-            <TaskDescForm/>
-            <TaskFormButtons/>
-        </body>
-      </form>
-    </div></center>
+  return (
+    <center>
+      <div className="taskForm" id="popUpForm">
+        <form action="" className="formContainer">
+          <h2>
+            <TaskFormHeader />
+          </h2>
+          <body>
+            {" "}
+            {/* className="popup" */}
+            <AddTaskLogo />
+            <TaskDescForm />
+            <TaskFormButtons />
+          </body>
+        </form>
+      </div>
+    </center>
   );
 }
 

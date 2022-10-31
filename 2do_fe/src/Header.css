@@ -1,20 +1,19 @@
-*{
-    margin-top: 5px;
-    padding: 0px;
-  }
+* {
+  margin-top: 5px;
+  padding: 0px;
+}
 
 /*Containers*/
-  .first-container {
-    display: flex;
-    height: 50px;
-    margin-top: 10px;
-    justify-content: space-around;
-  }
+.first-container {
+  display: flex;
+  height: 50px;
+  margin-top: 10px;
+  justify-content: space-around;
+}
 
-
-  /*Header Styling*/
+/*Header Styling*/
 .header-text {
-  font-family: 'Arial';
+  font-family: "Arial";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -26,8 +25,8 @@
 /* LOGO IN CONTAINER */
 .App-logo {
   height: 50px;
-  top: 1px;
-  margin-left: 50px;
+  top: 70px;
+  margin-left: 70px;
   position: relative;
 }
 
