@@ -1,9 +1,9 @@
 import React from "react";
-import NavBar from "./Components/NavBar/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Date from "./Components/Date/Date";
-import TaskDetail from "./Components/TaskDetail/TaskDetail";
+import Date from "./components/Date/Date";
+import TaskDetail from "./components/TaskDetail/TaskDetail";
 import AddTask from "./AddTask.js"
 import {openTaskDesc} from "./AddTask.js"
 import "./App.css";
