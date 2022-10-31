@@ -21,7 +21,9 @@ export default function TaskDetail() {
           <div className="border w-24 h-10 text-center py-2">1 Nov</div>
         </div>
         <div className="py-2 justify-self-end pr-14 col-span-2">
-          {StageButton("complete", "Done")}
+          {state
+            ? StageButton("complete", "Done")
+            : StageButton("inprogress", "In Progress")}
         </div>
       </div>
       <div className="px-3 border-t-2"></div>
