@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ProgressIcon from "./ProgressIcon.svg";
 import FinishIcon from "./FinishIcon.svg";
 import StageButton from "../Done/StageButton/StageButton";
+import { openTaskDesc } from "../../AddTask.js";
 
 export default function TaskDetail() {
   const [state, setState] = useState(false);
@@ -15,7 +16,7 @@ export default function TaskDetail() {
             alt="progress icon"
             onClick={() => setState(!state)}
           />
-          <div className="pl-2 capitalize">Make a design todo list</div>
+          <div className="pl-2 capitalize" onClick={openTaskDesc}>Make a design todo list</div>
         </div>
         <div className="py-2 flex justify-center">
           <div className="border w-24 h-10 text-center py-2">1 Nov</div>

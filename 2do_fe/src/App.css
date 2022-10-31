@@ -13,17 +13,17 @@
 .openButton {
     font-size: 20px;
     font-weight: 500;
-    width: 200px;
+    width: 50px;
     height: 50px;
     border-radius: 50px;
-    border: 2px solid rgba(219, 26, 39, 0.85);
-    background-color: #eaa2a3;
+    border: 2px solid rgba(190, 241, 243, 0.85);
+    background-color: #93d2e2;
     color: white;
     cursor: pointer;
     position: relative;
     margin-top: 20px;
     margin-bottom: 20px;
-    left: 10%;
+    left: 12%;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 

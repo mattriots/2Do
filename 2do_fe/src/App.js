@@ -40,8 +40,7 @@ function App() {
           </div>
         </Container>
         <button className="openButton" onClick={openTaskDesc}>
-          {" "}
-          + Add Task{" "}
+          + 
         </button>
         <div className="addTaskPopUp">
           <AddTask />
