@@ -7,20 +7,7 @@
   .first-container {
     display: flex;
     height: 50px;
-    justify-content: space-around;
-  }
-
-  .second-container {
-    display: flex;
-    margin-left: 5%;
-    flex-direction: column;
-    justify-content: space-around;
-  }
-
-  .third-container {
-    display: flex;
-    flex-direction: row;
-    height: 50px; 
+    margin-top: 10px;
     justify-content: space-around;
   }
 
@@ -39,7 +26,7 @@
 /* LOGO IN CONTAINER */
 .App-logo {
   height: 50px;
-  top: -2px;
+  top: 1px;
   margin-left: 50px;
   position: relative;
 }
