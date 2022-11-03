@@ -32,7 +32,7 @@ app.get("/tasks", async (req, res) => {
 });
 
 app.get("/tasks/:id", async (req, res) => {
-  console.log("made it here 2")
+  console.log("made it here 2");
   const id = req.params["id"]; //or req.params.id
   let result = await taskServices.findUserrsById(id);
   if (result === undefined || result.length == 0)
@@ -41,7 +41,6 @@ app.get("/tasks/:id", async (req, res) => {
     res.send({ task_list: result });
   }
 });
-
 
 app.post("/tasks", async (req, res) => {
   const task = req.body;

@@ -30,7 +30,7 @@ console.log(process.env.MONGO_DB);
 
 async function getTasks(status, dueDate) {
   let result;
-  console.log(dueDate)
+  console.log(dueDate);
   if (status === undefined && dueDate === undefined) {
     result = await taskModel.find();
   } else if (status && !dueDate) {
@@ -56,11 +56,11 @@ async function addTask(status, title, desc, dueDate) {
 
 async function deleteTask(id) {
   try {
-    console.log(id)
-    let result
+    console.log(id);
+    let result;
     result = await taskModel.findByIdAndDelete(id);
-    console.log(result)
-    return result
+    console.log(result);
+    return result;
   } catch (error) {
     console.log(error);
     return undefined;
