@@ -24,7 +24,12 @@ app.get("/tasks", async (req, res) => {
   const description = req.query.description;
   const dueDate = req.query.dueDate;
   try {
-    const result = await taskServices.getTasks(status, title, description, dueDate);
+    const result = await taskServices.getTasks(
+      status,
+      title,
+      description,
+      dueDate
+    );
     res.send({ tasks: result });
   } catch (error) {
     console.log(error);
@@ -75,4 +80,3 @@ app.delete("/tasks/:id", async (req, res) => {
 // }
 
 //Add user
-
