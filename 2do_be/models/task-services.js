@@ -24,24 +24,23 @@ mongoose
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }
-    
   )
   .catch((error) => console.log(error));
-  console.log(process.env.MONGO_DB)
+console.log(process.env.MONGO_DB);
 
-async function getTasks(status, title, description, dueDate) {
+async function getTasks(status, dueDate) {
   let result;
-  if (status === undefined && title === undefined) {
-    // Returns all tasks?
+  console.log(dueDate)
+  if (status === undefined && dueDate === undefined) {
     result = await taskModel.find();
-  // } else if (status && !title) {
-  //   result = await findTaskByStatus(status); //Returns just tasks with certain status: Complete, in progress?
-  // } else if (!status && title) {
-  //   result = await findTaskByCategory(title);
-  // } else {
-  //   result = await findTaskByStatusAndCategory(status, title);
-    return result;
+  } else if (status && !dueDate) {
+    result = await findTaskByStatus(status); //Returns just tasks with certain status: Complete, in progress?
+  } else if (!status && dueDate) {
+    result = await findTaskByDueDate(dueDate);
+  } else {
+    result = await findTaskByStatusAndCategory(status, dueDate);
   }
+  return result;
 }
 
 async function addTask(status, title, desc, dueDate) {
@@ -57,7 +56,11 @@ async function addTask(status, title, desc, dueDate) {
 
 async function deleteTask(id) {
   try {
-    return await taskModel.findByIdAndDelete(id);
+    console.log(id)
+    let result
+    result = await taskModel.findByIdAndDelete(id);
+    console.log(result)
+    return result
   } catch (error) {
     console.log(error);
     return undefined;
@@ -65,24 +68,12 @@ async function deleteTask(id) {
 }
 
 //Need to fix this up to align with our new approach of updating all fields
-//when updating any field in the task 
+//when updating any field in the task
 
-async function updateTaskDescription(description, id) {
+async function updateTask(description, id) {
   try {
     const filter = { id: `${findTaskById(id)}` };
     const update = { description: description };
-    let updatedTask = await taskModel.findOneAndUpdate(filter, update);
-    return updatedTask;
-  } catch (error) {
-    console.log(error);
-    return false;
-  }
-}
-
-async function updateTaskCategory(category, id) {
-  try {
-    const filter = { id: `${findTaskById(id)}` };
-    const update = { category: category };
     let updatedTask = await taskModel.findOneAndUpdate(filter, update);
     return updatedTask;
   } catch (error) {
@@ -116,28 +107,14 @@ async function findTaskByStatus(status) {
   return await taskModel.find({ status: status });
 }
 
-async function findTaskByCategory(status, category) {
-  return await taskModel.find({ status: status, category: category });
-}
-
-async function findTaskByStatusAndCategory(status, category) {
-  return await taskModel.find({ status: status, category: category });
-}
-
-async function findTaskByDate(status, category) {
-  return await taskModel.find({ status: status, category: category });
+async function findTaskByDueDate(dueDate) {
+  return await taskModel.find({ dueDate: dueDate });
 }
 
 exports.getTasks = getTasks;
-
 exports.addTask = addTask;
 exports.deleteTask = deleteTask;
-
 exports.findTaskByStatus = findTaskByStatus;
-exports.findTaskByStatusAndCategory = findTaskByStatusAndCategory;
-exports.findTaskByCategory = findTaskByCategory;
-exports.findTaskByDate = findTaskByDate;
-
-exports.updateTaskCategory = updateTaskCategory;
-exports.updateTaskDescription = updateTaskDescription;
+exports.findTaskByDueDate = findTaskByDueDate;
+exports.updateTask = updateTask;
 exports.updateTaskTitle = updateTaskTitle;

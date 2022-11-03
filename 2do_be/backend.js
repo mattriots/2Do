@@ -20,12 +20,11 @@ app.listen(port, () => {
 
 app.get("/tasks", async (req, res) => {
   const status = req.query.status;
-  const title = req.query.title;
-  const description = req.query.description;
   const dueDate = req.query.dueDate;
   try {
-    const result = await taskServices.getTasks(status, title, description, dueDate);
-    res.send({ tasks: result });
+    const result = await taskServices.getTasks(status, dueDate);
+    res.send({ task_list: result });
+    console.log(result);
   } catch (error) {
     console.log(error);
     res.status(500).send("An error ocurred in the server.");
@@ -33,14 +32,16 @@ app.get("/tasks", async (req, res) => {
 });
 
 app.get("/tasks/:id", async (req, res) => {
+  console.log("made it here 2")
   const id = req.params["id"]; //or req.params.id
-  let result = await taskServices.findUserById(id);
+  let result = await taskServices.findUserrsById(id);
   if (result === undefined || result.length == 0)
     res.status(404).send("Resource not found.");
   else {
-    res.send({ users_list: result });
+    res.send({ task_list: result });
   }
 });
+
 
 app.post("/tasks", async (req, res) => {
   const task = req.body;
@@ -59,20 +60,3 @@ app.delete("/tasks/:id", async (req, res) => {
     res.status(204).end();
   }
 });
-
-// const findUserByName = (name) => {
-//   return users["users_list"].filter((user) => user["name"] === name);
-// };
-
-// const findUserByNameAndJob = (name, job) => {
-//   return users["users_list"].filter(
-//     (user) => user["name"] === name && user["job"] === job
-//   );
-// };
-
-// function findUserById(id) {
-//   return users["users_list"].find((user) => user["id"] === id);
-// }
-
-//Add user
-
