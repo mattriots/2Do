@@ -11,8 +11,10 @@ https://www.figma.com/file/uHDBQEXPRQJdATXyNeKNJw/2Do_307?node-id=0%3A1
 ## `Backlog`
 https://github.com/users/mattriots/projects/2/views/1
 
-## `Project Backend Build badge`
+## `Project Build badges`
 ![example workflow](https://github.com/mattriots/2Do/actions/workflows/node_be.js.yml/badge.svg)
+
+![example workflow](https://github.com/mattriots/2Do/actions/workflows/node_fe.js.yml/badge.svg)
 
 ## `Prettier: Code Formatter`
 ### Setup Instructions
