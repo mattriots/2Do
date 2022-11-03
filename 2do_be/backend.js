@@ -12,8 +12,8 @@ app.get("/", (req, res) => {
   res.send("Hello Yall!");
 });
 
-app.listen(port, () => {
-  console.log(`The mongoose is listening at http://localhost:${port}`);
+app.listen(process.env.PORT || port, () => {
+  console.log(`The mongoose is listening`);
 });
 
 //Get users
