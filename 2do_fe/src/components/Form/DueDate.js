@@ -1,41 +1,40 @@
 import * as React from "react";
-import TextField from '@mui/material/TextField';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import "../../AddTask.css";
+import TextField from "@mui/material/TextField";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import "../AddTask/AddTask.css";
 
 export const DueDate = () => {
-    const [dueDate, setDueDate] = React.useState(null);
+  const [dueDate, setDueDate] = React.useState(null);
 
-    const handleChange = (newDate)=>{
-      setDueDate(newDate);
-    };
+  const handleChange = (newDate) => {
+    setDueDate(newDate);
+  };
 
-    return(
-      <div>
+  return (
+    <div>
       <label htmlFor="date">Due Date</label>
-      <LocalizationProvider dateAdapter = {AdapterDayjs}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DesktopDatePicker
-          inputFormat = "MM/DD/YYYY"
+          inputFormat="MM/DD/YYYY"
           value={dueDate}
-          onChange = {handleChange}
-          renderInput = {(params) => 
-            <TextField{...params} 
-              className="textfieldstyle"
-              id = "duedate"
-            />}
+          onChange={handleChange}
+          renderInput={(params) => (
+            <TextField {...params} className="textfieldstyle" id="duedate" />
+          )}
         />
       </LocalizationProvider>
-      </div>
-      
-    );
-}
+    </div>
+  );
+};
 
-{/* <input
+{
+  /* <input
         type="text"
         className="input-date"
         placeholder="Click here to choose date"
         // name = "date"
         // id = "date" />
-      /> */}
+      /> */
+}
