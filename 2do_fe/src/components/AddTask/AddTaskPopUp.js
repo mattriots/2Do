@@ -1,9 +1,9 @@
 import * as React from "react";
-import logo from "./logo_2do.png";
+import logo from "../../logo_2do.png";
 import "./AddTask.css";
-import { DueDate} from "./components/Form/DueDate";
+import { DueDate } from "../Form/DueDate";
 // import { Box } from "@mui/system";
-import TextField from '@mui/material/TextField';
+import TextField from "@mui/material/TextField";
 
 //import dayjs from 'dayjs';
 // import Stack from '@mui/material/Stack';
@@ -46,34 +46,34 @@ function TaskDescForm() {
   return (
     <center>
       <div id="Form-container">
-      <form>
-      <label htmlFor="title">Title</label>
-      {/* <input
+        <form>
+          <label htmlFor="title">Title</label>
+          {/* <input
         type="text"
         className="input-title"
         placeholder="Enter task title"
         // name = "title"
         // id = "title" />
       /> */}
-      <TextField
-        type = "text"
-        className="textfieldstyle"
-        id = "title"
-        placeholder="Enter task title"
-      />
-      
-      <label htmlFor="description">Description</label>
-      <TextField
-        type="text"
-        className="textfieldstyle"
-        id = "des"
-        placeholder="Enter task description"
-        multiline
-        rows={4}
-        
-        // name = "Description"
-      />
-        <DueDate/>
+          <TextField
+            type="text"
+            className="textfieldstyle"
+            id="title"
+            placeholder="Enter task title"
+          />
+
+          <label htmlFor="description">Description</label>
+          <TextField
+            type="text"
+            className="textfieldstyle"
+            id="des"
+            placeholder="Enter task description"
+            multiline
+            rows={4}
+
+            // name = "Description"
+          />
+          <DueDate />
         </form>
       </div>
     </center>
@@ -93,7 +93,7 @@ function TaskFormButtons() {
   );
 }
 
-function AddTask() {
+function AddTaskPopUp() {
   return (
     <center>
       <div className="taskForm" id="popUpForm">
@@ -114,4 +114,4 @@ function AddTask() {
   );
 }
 
-export default AddTask;
+export default AddTaskPopUp;

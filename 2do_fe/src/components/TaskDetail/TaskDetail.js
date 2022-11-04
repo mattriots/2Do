@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ProgressIcon from "./ProgressIcon.svg";
 import FinishIcon from "./FinishIcon.svg";
 import StageButton from "../Done/StageButton.js";
-import { openTaskDesc } from "../../AddTask.js";
+import { openTaskDesc } from "../AddTask/AddTaskPopUp.js";
 
 export default function TaskDetail() {
   const [state, setState] = useState(false);
