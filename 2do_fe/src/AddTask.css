@@ -7,12 +7,11 @@
   .taskForm {
     display: none;
     position: relative;
-    max-width: 80%;
-    min-height: 630px;
+    max-width: 60%;
+    min-height: 680px;
     border: 3px solid #e89b9b;
     background-color: white;
     filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.25));
-
   }
   
   .formContainer {
@@ -71,17 +70,6 @@
     /* transition:0.4s; */
   }
   /*==============================================*/
-  
-  /* .popup {
-    position: absolute;
-    width: 80%;
-    height: 90%;
-    top: 70px;
-    background-color: rgb(55, 196, 88);
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-  } */
   
   /* LOGO IN CONTAINER */
   .formContainer #logo-container
@@ -148,7 +136,7 @@
   }
   
   /* .formContainer .Form-container  */
-  form input {
+  /* form input {
     width: 95%;
     height: 55px;
     padding: 10px;
@@ -158,11 +146,34 @@
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     font-family: 'Montserrat';
   }
-  
+   */
   /* .formContainer .Form-container  */
-  form input.input-desc{
+  /* form input.input-desc{
     height: 100px;
   }
+
+  form input.input-title:hover{
+    border: 1px solid black;
+  }
+  form input.input-desc:hover{
+    border: 1px solid black;
+  } */
+
+  /* Due date TextField */
+  .MuiTextField-root{
+    width: 95%;
+  }
+
+  .textfieldstyle .MuiOutlinedInput-root {
+    height: 100%;
+    padding: 5px;
+    font-size: 16px;
+    font-family: 'Montserrat';
+    border-radius: 10px;
+    border: 1px solid rgb(26, 184, 219);
+    box-shadow:0px 3px 3px rgba(0, 0, 0, 0.25);
+  }
+  
   
   /*================================================*/
   

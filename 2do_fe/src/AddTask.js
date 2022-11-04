@@ -1,6 +1,16 @@
-import React from "react";
+import * as React from "react";
 import logo from "./logo_2do.png";
 import "./AddTask.css";
+import { DueDate} from "./components/Form/DueDate";
+// import { Box } from "@mui/system";
+import TextField from '@mui/material/TextField';
+
+//import dayjs from 'dayjs';
+// import Stack from '@mui/material/Stack';
+// import TextField from '@mui/material/TextField';
+// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+// import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 export function openTaskDesc() {
   document.getElementById("popUpForm").style.display = "block";
@@ -36,32 +46,34 @@ function TaskDescForm() {
   return (
     <center>
       <div id="Form-container">
-        <form>
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            className="input-title"
-            placeholder="Enter task title"
-            // name = "title"
-            // id = "title" />
-          />
-          <label htmlFor="description">Description</label>
-          <input
-            type="text"
-            className="input-desc"
-            placeholder="Enter task description"
-            // name = "Description"
-            // id = "des" />
-          />
-          <label htmlFor="date">Date end</label>
-          {/* need changes for date */}
-          <input
-            type="text"
-            className="input-date"
-            placeholder="Click here to choose date"
-            // name = "date"
-            // id = "date" />
-          />
+      <form>
+      <label htmlFor="title">Title</label>
+      {/* <input
+        type="text"
+        className="input-title"
+        placeholder="Enter task title"
+        // name = "title"
+        // id = "title" />
+      /> */}
+      <TextField
+        type = "text"
+        className="textfieldstyle"
+        id = "title"
+        placeholder="Enter task title"
+      />
+      
+      <label htmlFor="description">Description</label>
+      <TextField
+        type="text"
+        className="textfieldstyle"
+        id = "des"
+        placeholder="Enter task description"
+        multiline
+        rows={4}
+        
+        // name = "Description"
+      />
+        <DueDate/>
         </form>
       </div>
     </center>
