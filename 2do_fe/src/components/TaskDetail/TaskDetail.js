@@ -29,7 +29,7 @@ export default function TaskDetail() {
             : StageButton("inprogress", "In Progress")}
         </div>
       </div>
-      <div className="px-3 border-t-2"></div>
+      <div className="mx-11 border-t-2"></div>
     </>
   );
 }
