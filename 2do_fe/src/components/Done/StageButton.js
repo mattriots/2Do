@@ -17,6 +17,7 @@ const Status = styled.div`
   color: white;
 `;
 
+
 function StageButton(complete, text) {
   return <Status variant={complete}>{text}</Status>;
 }

@@ -9,7 +9,7 @@ function TasksList() {
   return (
     <Container maxWidth={false} style={{ marginTop: "50px" }}>
       <div id="content">
-        <div style={{ textAlign: "center", border: "1px solid" }}>
+        <div className="shadow" style={{ textAlign: "center" }}>
           <Box sx={{ flexGrow: 1 }}>
             <div className="grid grid-cols-5 gap-2 header-text border-b-2">
               <div className="text-3xl py-5 justify-self-start pl-14 col-span-2">
