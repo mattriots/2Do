@@ -92,7 +92,7 @@ async function updateTaskTitle(title, id) {
 }
 
 async function findTaskById(id) {
-  console.log("made it here")
+  console.log("made it here");
   try {
     return await taskModel.findById(id);
   } catch (error) {
@@ -110,7 +110,7 @@ async function findTaskByDueDate(dueDate) {
 }
 
 async function findTaskByStatusAndDueDate(status, dueDate) {
-  return await taskModel.find({status: status,  dueDate: dueDate });
+  return await taskModel.find({ status: status, dueDate: dueDate });
 }
 
 exports.getTasks = getTasks;
@@ -122,4 +122,3 @@ exports.findTaskByDueDate = findTaskByDueDate;
 exports.findTaskByStatusAndDueDate = findTaskByStatusAndDueDate;
 exports.updateTask = updateTask;
 exports.updateTaskTitle = updateTaskTitle;
-
