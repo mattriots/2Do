@@ -32,7 +32,6 @@ app.get("/tasks", async (req, res) => {
 });
 
 app.get("/tasks/:id", async (req, res) => {
-  console.log("made it here 2");
   const id = req.params["id"]; //or req.params.id
   let result = await taskServices.findUserrsById(id);
   if (result === undefined || result.length == 0)
@@ -51,7 +50,6 @@ app.post("/tasks", async (req, res) => {
 
 app.delete("/tasks/:id", async (req, res) => {
   const id = req.params.id;
-  console.log(id);
   let taskToDelete = await taskServices.deleteTask(id);
   if (taskToDelete === undefined || taskToDelete.length === 0)
     res.status(404).send("Resource not found.");
