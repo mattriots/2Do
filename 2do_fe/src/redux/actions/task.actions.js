@@ -1,10 +1,18 @@
 import * as types from "../constants/task.constants";
 import api from "../../api";
 
-const getAllTasks = () => async (dispatch) => {
+const getAllTasks = (status, dueDate) => async (dispatch) => {
   dispatch({ type: types.GET_ALL_TASKS_REQUEST });
   try {
-    const res = await api.get(`/tasks`);
+    let url = "";
+    if (status === undefined && dueDate === undefined) {
+      url = `/tasks`;
+    } else if (status !== undefined && dueDate === undefined) {
+      url = `/tasks?status=${status}`;
+    } else {
+      url = `/tasks?status=${status}&dueDate=${dueDate}`;
+    }
+    const res = await api.get(url);
     dispatch({
       type: types.GET_ALL_TASKS_SUCCESS,
       payload: res.data.task_list,

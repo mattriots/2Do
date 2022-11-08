@@ -6,6 +6,8 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.5",
     "@fontsource/roboto": "^4.5.8",
+    "@headlessui/react": "^1.7.4",
+    "@heroicons/react": "^2.0.13",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.10",
     "@mui/styled-engine-sc": "^5.10.6",
