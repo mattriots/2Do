@@ -49,6 +49,14 @@ app.post("/tasks", async (req, res) => {
   else res.status(500).end();
 });
 
+app.put("/tasks", async (req, res) => {
+  console.log("in the put")
+  const task = req.body;
+  const updatedTask = await taskServices.updateTask(task);
+  if (updatedTask) res.status(201).send(updatedTask);
+  else res.status(500).end();
+});
+
 app.delete("/tasks/:id", async (req, res) => {
   const id = req.params.id;
   let taskToDelete = await taskServices.deleteTask(id);
