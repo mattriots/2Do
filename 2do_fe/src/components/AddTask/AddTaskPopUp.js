@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import logo from "../../logo_2do.png";
 import "./AddTask.css";
 import { DueDate } from "../Form/DueDate";

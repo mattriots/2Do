@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import AddTask from "../AddTask/AddTask";
 import TaskDetail from "../TaskDetail/TaskDetail";
 import Box from "@mui/material/Box";
@@ -21,11 +21,7 @@ function TasksList() {
                 Stage
               </div>
             </div>
-            <TaskDetail />
-            <TaskDetail />
-            <TaskDetail />
-            <TaskDetail />
-            <TaskDetail />
+            <TaskDetail task="Make a design in todo list" date="1 Nov" />
             <AddTask />
           </Box>
         </div>

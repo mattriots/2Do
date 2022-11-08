@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import ProgressIcon from "./ProgressIcon.svg";
 import FinishIcon from "./FinishIcon.svg";
 import StageButton from "../Done/StageButton.js";
 import { openTaskDesc } from "../AddTask/AddTaskPopUp.js";
 
-export default function TaskDetail() {
+export default function TaskDetail(props) {
   const [state, setState] = useState(false);
+  const task = props.task;
+  const date = props.date;
 
   return (
     <>
@@ -17,11 +20,11 @@ export default function TaskDetail() {
             onClick={() => setState(!state)}
           />
           <div className="pl-2 capitalize" onClick={openTaskDesc}>
-            Make a design todo list
+            {task}
           </div>
         </div>
         <div className="py-2 flex justify-center">
-          <div className="border w-24 h-10 text-center py-2">1 Nov</div>
+          <div className="border w-24 h-10 text-center py-2">{date}</div>
         </div>
         <div className="py-2 justify-self-end pr-14 col-span-2">
           {state
@@ -33,3 +36,8 @@ export default function TaskDetail() {
     </>
   );
 }
+
+TaskDetail.propTypes = {
+  task: PropTypes.string,
+  date: PropTypes.string,
+};
