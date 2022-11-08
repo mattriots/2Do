@@ -35,7 +35,7 @@ function TasksList() {
             {loading ? (
               <div>loading</div>
             ) : (
-              <div>
+              <div className="overflow-scroll h-[27rem]">
                 {tasks.map((task, index) => (
                   <TaskDetail key={index} task={task} />
                 ))}
