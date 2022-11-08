@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import AddTask from "../AddTask/AddTask";
 import TaskDetail from "../TaskDetail/TaskDetail";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import logo from "../../logo_2do.png";
+import taskActions from "../../redux/actions/task.actions";
 
 function TasksList() {
+  const dispatch = useDispatch();
+  const tasks = useSelector((state) => state.tasks);
+  const loading = useSelector((state) => state.loading);
+
+  useEffect(() => {
+    dispatch(taskActions.getAllTasks());
+  }, [dispatch]);
+
+  console.log("is loading", loading);
   return (
     <Container maxWidth={false} style={{ marginTop: "50px" }}>
       <div id="content">
@@ -21,11 +32,16 @@ function TasksList() {
                 Stage
               </div>
             </div>
-            <TaskDetail />
-            <TaskDetail />
-            <TaskDetail />
-            <TaskDetail />
-            <TaskDetail />
+            {loading ? (
+              <div>loading</div>
+            ) : (
+              <div>
+                {tasks.map((task, index) => (
+                  <TaskDetail key={index} task={task} />
+                ))}
+              </div>
+            )}
+            ;
             <AddTask />
           </Box>
         </div>
