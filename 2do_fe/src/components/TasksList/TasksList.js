@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import logo from "../../logo_2do.png";
 import taskActions from "../../redux/actions/task.actions";
+import ViewTaskBy from "../ViewTaskBy/ViewTaskBy";
 
 function TasksList() {
   const dispatch = useDispatch();
@@ -16,7 +17,6 @@ function TasksList() {
     dispatch(taskActions.getAllTasks());
   }, [dispatch]);
 
-  console.log("is loading", loading);
   return (
     <Container maxWidth={false} style={{ marginTop: "50px" }}>
       <div id="content">
@@ -32,16 +32,16 @@ function TasksList() {
                 Stage
               </div>
             </div>
+            <ViewTaskBy />
             {loading ? (
               <div>loading</div>
             ) : (
-              <div className="overflow-scroll h-[27rem]">
+              <div className="overflow-scroll h-[22rem]">
                 {tasks.map((task, index) => (
                   <TaskDetail key={index} task={task} />
                 ))}
               </div>
             )}
-            ;
             <AddTask />
           </Box>
         </div>
