@@ -1,11 +1,22 @@
-import * as React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import AddTask from "../AddTask/AddTask";
 import TaskDetail from "../TaskDetail/TaskDetail";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import logo from "../../logo_2do.png";
+import taskActions from "../../redux/actions/task.actions";
+import ViewTaskBy from "../ViewTaskBy/ViewTaskBy";
 
 function TasksList() {
+  const dispatch = useDispatch();
+  const tasks = useSelector((state) => state.tasks);
+  const loading = useSelector((state) => state.loading);
+
+  useEffect(() => {
+    dispatch(taskActions.getAllTasks());
+  }, [dispatch]);
+
   return (
     <Container maxWidth={false} style={{ marginTop: "50px" }}>
       <div id="content">
@@ -21,7 +32,16 @@ function TasksList() {
                 Stage
               </div>
             </div>
-            <TaskDetail task="Make a design in todo list" date="1 Nov" />
+            <ViewTaskBy />
+            {loading ? (
+              <div>loading</div>
+            ) : (
+              <div className="overflow-scroll h-[22rem]">
+                {tasks.map((task, index) => (
+                  <TaskDetail key={index} task={task} />
+                ))}
+              </div>
+            )}
             <AddTask />
           </Box>
         </div>

@@ -80,6 +80,8 @@ function TaskDescForm() {
   );
 }
 
+//will need to use dispatch once I delete a task
+
 function TaskFormButtons() {
   return (
     <div className="Button-container">
@@ -87,7 +89,7 @@ function TaskFormButtons() {
         Confirm
       </button>
       <button onClick={closeTaskDesc} className="Cancel-button">
-        Cancel
+        Delete
       </button>
     </div>
   );

@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(process.env.PORT || port, () => {
-  console.log(`The mongoose is listening`);
+  console.log("The mongoose is listening");
 });
 
 //Get users
@@ -32,8 +32,9 @@ app.get("/tasks", async (req, res) => {
 });
 
 app.get("/tasks/:id", async (req, res) => {
-  const id = req.params["id"]; //or req.params.id
-  let result = await taskServices.findUserrsById(id);
+  const id = req.params["id"];
+  console.log(id);
+  let result = await taskServices.findTaskById(id);
   if (result === undefined || result.length == 0)
     res.status(404).send("Resource not found.");
   else {
