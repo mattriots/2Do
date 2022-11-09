@@ -50,7 +50,7 @@ app.post("/tasks", async (req, res) => {
 });
 
 app.put("/tasks", async (req, res) => {
-  console.log("in the put")
+  console.log("in the put");
   const task = req.body;
   const updatedTask = await taskServices.updateTask(task);
   if (updatedTask) res.status(201).send(updatedTask);
