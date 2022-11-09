@@ -31,7 +31,8 @@ const taskReducer = (state = initialState, action) => {
       };
 
     case types.GET_ALL_TASKS_FAILURE:
-      return { ...state, loading: false };
+    case types.ADD_TASKS_FAILURE:
+      return { ...state, loading: false }; // error: payload
 
     default:
       return state;

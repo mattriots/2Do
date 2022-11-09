@@ -22,7 +22,29 @@ const getAllTasks = (status, dueDate) => async (dispatch) => {
   }
 };
 
+const addTask = (taskData) => async (dispatch) => {
+  dispatch({type: types.ADD_TASKS_REQUEST, payload: null});
+  try {
+    console.log("Add Tasks", taskData);
+    //>>>>ASK ABOUT POST ROUTE<<<<<//
+    const res = await api.post(`/tasks`, {
+      status: taskData.status,
+      title: taskData.title,
+      description: taskData.description,
+      dueDate: taskData.dueDate,
+    });
+
+    dispatch({
+      type: types.ADD_TASKS_SUCCESS,
+      payload: res.data.task_list,
+    });
+  } catch (error) { 
+    dispatch({ type: types.ADD_TASKS_FAILURE, payload: error});
+  }
+};
+
 const taskActions = {
   getAllTasks,
+  addTask,
 };
 export default taskActions;

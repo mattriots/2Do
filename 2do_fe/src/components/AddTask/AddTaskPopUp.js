@@ -1,20 +1,20 @@
-import * as React from "react";
+import React, {useState} from "react";
 import logo from "../../logo_2do.png";
 import "./AddTask.css";
-import { DueDate } from "../Form/DueDate";
-// import { Box } from "@mui/system";
-import TextField from "@mui/material/TextField";
 
-//import dayjs from 'dayjs';
-// import Stack from '@mui/material/Stack';
-// import TextField from '@mui/material/TextField';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-// import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+//import { DueDate } from "../Form/DueDate";
+// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+// import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+// import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+
+import TextField from "@mui/material/TextField";
+import {useDispatch} from "react-redux";
+import taskActions from "../../redux/actions/task.actions";
 
 export function openTaskDesc() {
   document.getElementById("popUpForm").style.display = "block";
 }
+
 function closeTaskDesc() {
   document.getElementById("popUpForm").style.display = "none";
 }
@@ -43,57 +43,78 @@ function AddTaskLogo() {
 }
 
 function TaskDescForm() {
+  const [taskData, setTaskData] = useState({
+    status: "in progress",
+    title: "",
+    description: "",
+    dueDate: null,
+  });
+
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    setTaskData({ ...taskData, [e.target.name]: e.target.value});
+  }
+
   return (
     <center>
       <div id="Form-container">
         <form>
           <label htmlFor="title">Title</label>
-          {/* <input
-        type="text"
-        className="input-title"
-        placeholder="Enter task title"
-        // name = "title"
-        // id = "title" />
-      /> */}
           <TextField
-            type="text"
+            required
             className="textfieldstyle"
-            id="title"
+            type="text"
+            name="title"
+            vlaue={taskData.title}
             placeholder="Enter task title"
+            onChange = {handleChange}
           />
 
           <label htmlFor="description">Description</label>
           <TextField
-            type="text"
             className="textfieldstyle"
-            id="des"
+            type="text"
+            name="description"
+            value={taskData.description} 
             placeholder="Enter task description"
             multiline
             rows={4}
-
-            // name = "Description"
+            onChange = {handleChange}
           />
-          <DueDate />
+
+          {/* <DueDate /> */}
+          <label htmlFor="date">Due Date</label>
+            <TextField
+              className="textfieldstyle"
+              type = "text"
+              name = "dueDate"
+              placeholder="MM/DD/YYYY"
+              value={taskData.dueDate}
+              onChange={handleChange}
+            />
+
+          <div className="Button-container">
+          <button onClick= { ()=> {
+            dispatch(taskActions.addTask(taskData));
+            }}
+            className="Add-button">
+            Confirm
+          </button>
+          <button onClick={closeTaskDesc} className="Cancel-button">
+            Cancel
+          </button>
+        </div>
+        
+
         </form>
       </div>
     </center>
   );
 }
 
-function TaskFormButtons() {
-  return (
-    <div className="Button-container">
-      <button onClick="" className="Add-button">
-        Confirm
-      </button>
-      <button onClick={closeTaskDesc} className="Cancel-button">
-        Cancel
-      </button>
-    </div>
-  );
-}
-
 function AddTaskPopUp() {
+  
   return (
     <center>
       <div className="taskForm" id="popUpForm">
@@ -102,11 +123,8 @@ function AddTaskPopUp() {
             <TaskFormHeader />
           </h2>
           <body>
-            {" "}
-            {/* className="popup" */}
             <AddTaskLogo />
             <TaskDescForm />
-            <TaskFormButtons />
           </body>
         </form>
       </div>
