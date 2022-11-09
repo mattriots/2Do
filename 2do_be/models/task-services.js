@@ -67,23 +67,14 @@ async function deleteTask(id) {
 //Need to fix this up to align with our new approach of updating all fields
 //when updating any field in the task
 
-async function updateTask(description, id) {
+async function updateTask(id, status, title, description, dueDate) {
   try {
-    const filter = { id: `${findTaskById(id)}` };
-    const update = { description: description };
-    let updatedTask = await taskModel.findOneAndUpdate(filter, update);
-    return updatedTask;
-  } catch (error) {
-    console.log(error);
-    return false;
-  }
-}
-
-async function updateTaskTitle(title, id) {
-  try {
-    const filter = { id: `${findTaskById(id)}` };
-    const update = { title: title };
-    let updatedTask = await taskModel.findOneAndUpdate(filter, update);
+    console.log("in update")
+    const filter = { id: id };
+    console.log(filter)
+    const update = new taskModel( status, title, description, dueDate);
+    console.log(update)
+    let updatedTask = await taskModel.findByIdAndUpdate(id, update);
     return updatedTask;
   } catch (error) {
     console.log(error);
@@ -92,7 +83,6 @@ async function updateTaskTitle(title, id) {
 }
 
 async function findTaskById(id) {
-  console.log("made it here");
   try {
     return await taskModel.findById(id);
   } catch (error) {
@@ -121,4 +111,3 @@ exports.findTaskByStatus = findTaskByStatus;
 exports.findTaskByDueDate = findTaskByDueDate;
 exports.findTaskByStatusAndDueDate = findTaskByStatusAndDueDate;
 exports.updateTask = updateTask;
-exports.updateTaskTitle = updateTaskTitle;
