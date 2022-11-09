@@ -8,6 +8,8 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
+console.log("Is this thing running!?")
+
 app.get("/", (req, res) => {
   res.send("Hello Yall!");
 });
@@ -15,6 +17,7 @@ app.get("/", (req, res) => {
 app.listen(process.env.PORT || port, () => {
   console.log("The mongoose is listening");
 });
+
 
 //Get users
 
