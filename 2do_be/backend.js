@@ -8,8 +8,6 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
-console.log("Is this thing running!?")
-
 app.get("/", (req, res) => {
   res.send("Hello Yall!");
 });
@@ -17,7 +15,6 @@ app.get("/", (req, res) => {
 app.listen(process.env.PORT || port, () => {
   console.log("The mongoose is listening");
 });
-
 
 //Get users
 
@@ -36,7 +33,6 @@ app.get("/tasks", async (req, res) => {
 
 app.get("/tasks/:id", async (req, res) => {
   const id = req.params["id"];
-  console.log(id);
   let result = await taskServices.findTaskById(id);
   if (result === undefined || result.length == 0)
     res.status(404).send("Resource not found.");
@@ -52,10 +48,14 @@ app.post("/tasks", async (req, res) => {
   else res.status(500).end();
 });
 
-app.put("/tasks", async (req, res) => {
-  console.log("in the put");
-  const task = req.body;
-  const updatedTask = await taskServices.updateTask(task);
+app.put("/tasks/:id", async (req, res) => {
+  const id = req.params.id;
+  const status = req.params.status;
+  const title = req.params.title;
+  const desc = req.params.description;
+  const dueDate = req.params.dueDate;
+  console.log(id)
+  const updatedTask = await taskServices.updateTask(id, status, title, desc, dueDate);
   if (updatedTask) res.status(201).send(updatedTask);
   else res.status(500).end();
 });

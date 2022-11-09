@@ -69,12 +69,26 @@ async function deleteTask(id) {
 
 async function updateTask(id, status, title, description, dueDate) {
   try {
-    console.log("in update");
     const filter = { id: id };
     console.log(filter);
-    const update = new taskModel(status, title, description, dueDate);
-    console.log(update);
-    let updatedTask = await taskModel.findByIdAndUpdate(id, update);
+    // const update = new taskModel(status, title, description, dueDate);
+    // console.log(update);
+    let updatedTask = await taskModel.findByIdAndUpdate(
+      id,
+      {
+        status: status,
+        title: title,
+        description: description,
+        dueDate: dueDate,
+      },
+      function (err, upd) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Updated Task : ", upd);
+        }
+      }
+    );
     return updatedTask;
   } catch (error) {
     console.log(error);
