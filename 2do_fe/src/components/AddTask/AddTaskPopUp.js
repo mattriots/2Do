@@ -2,7 +2,9 @@ import React from "react";
 import logo from "../../logo_2do.png";
 import "./AddTask.css";
 import { DueDate } from "../Form/DueDate";
+import { useDispatch } from "react-redux";
 // import { Box } from "@mui/system";
+import taskActions from "../../redux/actions/task.actions";
 import TextField from "@mui/material/TextField";
 
 //import dayjs from 'dayjs';
@@ -80,15 +82,18 @@ function TaskDescForm() {
   );
 }
 
-//will need to use dispatch once I delete a task
-
 function TaskFormButtons() {
+  const dispatch = useDispatch();
+
   return (
     <div className="Button-container">
       <button onClick="" className="Add-button">
         Confirm
       </button>
-      <button onClick={closeTaskDesc} className="Cancel-button">
+      <button
+        onClick={() => dispatch(taskActions.deleteTask())}
+        className="Cancel-button"
+      >
         Delete
       </button>
     </div>

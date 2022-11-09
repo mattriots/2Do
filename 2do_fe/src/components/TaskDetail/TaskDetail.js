@@ -1,20 +1,40 @@
 import React from "react";
 import ProgressIcon from "./ProgressIcon.svg";
 import FinishIcon from "./FinishIcon.svg";
+import { useDispatch } from "react-redux";
 import StageButton from "../Done/StageButton.js";
-import { openTaskDesc } from "../AddTask/AddTaskPopUp.js";
+
+//import { openTaskDesc } from "../AddTask/AddTaskPopUp.js";
 import Moment from "react-moment";
+import taskActions from "../../redux/actions/task.actions";
+
+// function EditTaskPopUp() {
+//   //console.log("second thing happened");
+// }
+
+// function EditTask() {
+//   EditTaskPopUp();
+
+//   console.log(dispatch(taskActions.getTaskById()));
+// }
 
 export default function TaskDetail({ task }) {
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className="grid grid-cols-5 gap-3">
         <div className="py-2 justify-self-start pl-5 flex col-span-2 w-80 items-center">
-          <img
-            src={task.status === "completed" ? FinishIcon : ProgressIcon}
-            alt="progress icon"
-          />
-          <div className="pl-2 capitalize" onClick={openTaskDesc}>
+          <button onClick="">
+            <img
+              src={task.status === "completed" ? FinishIcon : ProgressIcon}
+              alt="progress icon"
+            />
+          </button>
+          <div
+            className="pl-2 capitalize"
+            onClick={() => dispatch(taskActions.getTaskById())}
+          >
             {task.title}
           </div>
         </div>
