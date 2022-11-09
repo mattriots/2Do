@@ -9,6 +9,10 @@ on:
       - main
   workflow_dispatch:
 
+defaults:
+  run:
+    working-directory: ./2do_be
+
 jobs:
   build:
     runs-on: ubuntu-latest
