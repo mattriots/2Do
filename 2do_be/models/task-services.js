@@ -73,22 +73,7 @@ async function updateTask(id, status, title, description, dueDate) {
     console.log(filter);
     // const update = new taskModel(status, title, description, dueDate);
     // console.log(update);
-    let updatedTask = await taskModel.findByIdAndUpdate(
-      id,
-      {
-        status: status,
-        title: title,
-        description: description,
-        dueDate: dueDate,
-      },
-      function (err, upd) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log("Updated Task : ", upd);
-        }
-      }
-    );
+    let updatedTask = await taskModel.findByIdAndUpdate(id, {status});
     return updatedTask;
   } catch (error) {
     console.log(error);
