@@ -33,7 +33,6 @@ app.get("/tasks", async (req, res) => {
 
 app.get("/tasks/:id", async (req, res) => {
   const id = req.params["id"];
-  console.log(id);
   let result = await taskServices.findTaskById(id);
   if (result === undefined || result.length == 0)
     res.status(404).send("Resource not found.");
@@ -49,10 +48,10 @@ app.post("/tasks", async (req, res) => {
   else res.status(500).end();
 });
 
-app.put("/tasks", async (req, res) => {
-  console.log("in the put");
-  const task = req.body;
-  const updatedTask = await taskServices.updateTask(task);
+app.put("/tasks/:id", async (req, res) => {
+  const id = req.params.id;
+  const body = req.body;
+  const updatedTask = await taskServices.updateTask(id, body);
   if (updatedTask) res.status(201).send(updatedTask);
   else res.status(500).end();
 });

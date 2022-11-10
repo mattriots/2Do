@@ -11,7 +11,7 @@ on:
 
 defaults:
   run:
-    working-directory: ./2do_fe
+    working-directory: ./2do_be
 
 jobs:
   build:
@@ -58,4 +58,4 @@ jobs:
           app-name: "2Do-307"
           slot-name: "Production"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D929C0B5FCC84FBC85364148A63FE279 }}
-          package: .
+          package: ./2do_be
