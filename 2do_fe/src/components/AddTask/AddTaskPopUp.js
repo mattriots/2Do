@@ -66,7 +66,7 @@ function TaskDescForm() {
             className="textfieldstyle"
             type="text"
             name="title"
-            vlaue={taskData.title}
+            value={taskData.title}
             placeholder="Enter task title"
             onChange = {handleChange}
           />
