@@ -64,16 +64,9 @@ async function deleteTask(id) {
   }
 }
 
-//Need to fix this up to align with our new approach of updating all fields
-//when updating any field in the task
-
-async function updateTask(id, status, title, description, dueDate) {
+async function updateTask(id, body) {
   try {
-    const filter = { id: id };
-    console.log(filter);
-    // const update = new taskModel(status, title, description, dueDate);
-    // console.log(update);
-    let updatedTask = await taskModel.findByIdAndUpdate(id, {status});
+    let updatedTask = await taskModel.findByIdAndUpdate(id, body);
     return updatedTask;
   } catch (error) {
     console.log(error);
