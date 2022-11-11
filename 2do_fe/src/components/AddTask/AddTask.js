@@ -1,6 +1,7 @@
 import React from "react";
 import AddTaskPopUp, { openTaskDesc } from "./AddTaskPopUp";
 import AddTaskIcon from "./AddTaskIcon.svg";
+import Edit from "../EditTask/EditTaskPopUp";
 
 function AddTask() {
   return (
@@ -19,6 +20,11 @@ function AddTask() {
       <div className="addTaskPopUp">
         <AddTaskPopUp />
       </div>
+
+      <>
+        {" "}
+        <Edit />
+      </>
     </>
   );
 }
