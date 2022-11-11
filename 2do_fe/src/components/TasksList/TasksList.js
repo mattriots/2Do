@@ -29,14 +29,14 @@ function TasksList() {
               </div>
               <div className="text-3xl py-5 ">Due Date</div>
               <div className="text-3xl py-5 justify-self-end pr-14 col-span-2">
-                Stage
+                Status
               </div>
             </div>
             <ViewTaskBy />
             {loading ? (
               <div>loading</div>
             ) : (
-              <div className="overflow-scroll h-[22rem]">
+              <div className="overflow-scroll h-[33rem]">
                 {tasks.map((task, index) => (
                   <TaskDetail key={index} task={task} />
                 ))}

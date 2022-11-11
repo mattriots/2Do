@@ -2,7 +2,7 @@ import React from "react";
 import ProgressIcon from "./ProgressIcon.svg";
 import FinishIcon from "./FinishIcon.svg";
 import StageButton from "../Done/StageButton.js";
-import { openTaskDesc } from "../AddTask/AddTaskPopUp.js";
+//import { openTaskDesc } from "../AddTask/AddTaskPopUp.js";
 import Moment from "react-moment";
 
 export default function TaskDetail({ task }) {
@@ -14,7 +14,7 @@ export default function TaskDetail({ task }) {
             src={task.status === "completed" ? FinishIcon : ProgressIcon}
             alt="progress icon"
           />
-          <div className="pl-2 capitalize" onClick={openTaskDesc}>
+          <div className="pl-2 capitalize">
             {task.title}
           </div>
         </div>
