@@ -22,7 +22,7 @@ export default function TaskDetail({ task }) {
           <button
             className="pl-2 capitalize"
             id="popUpEditForm"
-            onClick={() => openEditDesc()}
+            onClick={openEditDesc}
           >
             {task.title}
           </button>
