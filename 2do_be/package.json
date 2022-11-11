@@ -6,7 +6,8 @@
   "scripts": {
     "test": "prettier --check .",
     "dev": "nodemon backend.js",
-    "start": "node backend.js"
+    "start": "node backend.js",
+    "pretty": "prettier --write \"./**/*.{js,jsx,json}\""
   },
   "author": "",
   "license": "ISC",
