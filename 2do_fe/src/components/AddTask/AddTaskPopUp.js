@@ -17,11 +17,12 @@ import TextField from "@mui/material/TextField";
 export function openTaskDesc() {
   document.getElementById("popUpForm").style.display = "block";
 }
-function closeTaskDesc() {
+
+export function closeTaskDesc() {
   document.getElementById("popUpForm").style.display = "none";
 }
 
-function TaskFormHeader() {
+export function TaskFormHeader() {
   return (
     <header className="TaskForm-header">
       <p className="FormHeader-text">Task Details</p>
@@ -32,7 +33,7 @@ function TaskFormHeader() {
   );
 }
 
-function AddTaskLogo() {
+export function AddTaskLogo() {
   return (
     <center>
       <div id="logo-container">
@@ -44,7 +45,7 @@ function AddTaskLogo() {
   );
 }
 
-function TaskDescForm() {
+export function TaskDescForm() {
   return (
     <center>
       <div id="Form-container">
@@ -82,7 +83,7 @@ function TaskDescForm() {
   );
 }
 
-function TaskFormButtons() {
+export function TaskFormButtons() {
   const dispatch = useDispatch();
 
   return (

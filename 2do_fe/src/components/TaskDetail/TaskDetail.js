@@ -1,21 +1,29 @@
 import React from "react";
+//import { useDispatch } from "react-redux";
 import ProgressIcon from "./ProgressIcon.svg";
 import FinishIcon from "./FinishIcon.svg";
-import { useDispatch } from "react-redux";
 import StageButton from "../Done/StageButton.js";
-import { openTaskDesc } from "../AddTask/AddTaskPopUp.js";
+import { openEditDesc } from "../EditTask/EditTaskPopUp";
 import Moment from "react-moment";
 
+/* eslint-disable */
 export default function TaskDetail({ task }) {
+  //const dispatch = useDispatch();
+
   return (
     <>
       <div className="grid grid-cols-5 gap-3">
         <div className="py-2 justify-self-start pl-5 flex col-span-2 w-80 items-center">
-          <img
+          <input
+            type="image"
             src={task.status === "completed" ? FinishIcon : ProgressIcon}
             alt="progress icon"
           />
-          <div className="pl-2 capitalize" onClick={openTaskDesc}>
+          <div
+            className="pl-2 capitalize"
+            id="popUpEditForm"
+            onClick={() => openEditDesc()}
+          >
             {task.title}
           </div>
         </div>
