@@ -19,13 +19,13 @@ export default function TaskDetail({ task }) {
             src={task.status === "completed" ? FinishIcon : ProgressIcon}
             alt="progress icon"
           />
-          <div
+          <button
             className="pl-2 capitalize"
             id="popUpEditForm"
             onClick={() => openEditDesc()}
           >
             {task.title}
-          </div>
+          </button>
         </div>
         <div className="py-2 flex justify-center">
           <div className="border w-24 h-10 text-center py-2">

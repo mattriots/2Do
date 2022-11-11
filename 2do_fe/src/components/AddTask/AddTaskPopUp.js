@@ -95,7 +95,7 @@ export function TaskFormButtons() {
         onClick={() => dispatch(taskActions.deleteTask())}
         className="Cancel-button"
       >
-        Delete
+        Cancel
       </button>
     </div>
   );
