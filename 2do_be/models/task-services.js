@@ -75,7 +75,6 @@ async function updateTask(id, body) {
 }
 
 async function findTaskById(id) {
-  console.log("made it here");
   try {
     return await taskModel.findById(id);
   } catch (error) {

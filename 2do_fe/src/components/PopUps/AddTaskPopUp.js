@@ -19,7 +19,7 @@ export function closeTaskDesc() {
   document.getElementById("popUpForm").style.display = "none";
 }
 
-export function TaskFormHeader() {
+function TaskFormHeader() {
   return (
     <header className="TaskForm-header">
       <p className="FormHeader-text">Task Details</p>
@@ -30,7 +30,7 @@ export function TaskFormHeader() {
   );
 }
 
-export function AddTaskLogo() {
+function AddTaskLogo() {
   return (
     <center>
       <div id="logo-container">
@@ -42,7 +42,7 @@ export function AddTaskLogo() {
   );
 }
 
-export function TaskDescForm() {
+function TaskDescForm() {
   const [taskData, setTaskData] = useState({
     status: "in progress",
     title: "",

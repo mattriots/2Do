@@ -25,7 +25,7 @@ export function TaskFormHeader() {
   );
 }
 
-export function EditTaskLogo() {
+function EditTaskLogo() {
   return (
     <center>
       <div id="logo-container">
@@ -37,7 +37,7 @@ export function EditTaskLogo() {
   );
 }
 
-export function TaskDescForm() {
+function TaskDescForm() {
   const [taskData, setTaskData] = useState({
     status: "in progress",
     title: "",
