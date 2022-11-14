@@ -17,9 +17,11 @@ https://github.com/users/mattriots/projects/2/views/1
 
 ## `Project Build badges`
 
-![example workflow](https://github.com/mattriots/2Do/actions/workflows/node_be.js.yml/badge.svg)
+![Backend](https://github.com/mattriots/2Do/actions/workflows/node_be.js.yml/badge.svg)
 
-![example workflow](https://github.com/mattriots/2Do/actions/workflows/node_fe.js.yml/badge.svg)
+![Frontend](https://github.com/mattriots/2Do/actions/workflows/node_fe.js.yml/badge.svg)
+
+![Constant Depolyment](https://github.com/mattriots/2Do/actions/workflows/main_2do-307.yml/badge.svg)
 
 ## `Prettier: Code Formatter`
 
