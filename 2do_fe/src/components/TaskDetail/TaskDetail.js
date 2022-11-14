@@ -9,7 +9,10 @@ import Moment from "react-moment";
 
 /* eslint-disable */
 export default function TaskDetail({ task }) {
-  //const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(taskActions.getTaskById(task._id));
+  // }, [dispatch]);
 
   return (
     <>

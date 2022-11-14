@@ -63,6 +63,7 @@ const deleteTask = (id) => async (dispatch) => {
 
 //Still a work in progress (Not being used yet)
 const getTaskById = (id) => async (dispatch) => {
+  console.log("here");
   dispatch({ type: types.GET_SINGLE_TASKS_REQUEST });
   try {
     let url = "";
@@ -72,7 +73,7 @@ const getTaskById = (id) => async (dispatch) => {
     console.log(id);
     dispatch({
       type: types.GET_SINGLE_TASKS_SUCCESS,
-      payload: res.data.task_list,
+      payload: res.data.single_task,
     });
   } catch (error) {
     dispatch({ type: types.GET_SINGLE_TASKS_FAILURE, payload: error });

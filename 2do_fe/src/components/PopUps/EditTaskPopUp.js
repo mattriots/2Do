@@ -6,8 +6,12 @@ import { useDispatch } from "react-redux";
 import taskActions from "../../redux/actions/task.actions";
 
 export function openEditDesc(task) {
-  console.log(task);
+  console.log(task._id);
+  //fetch get current task -> store single task
   document.getElementById("popUpEditForm").style.display = "block";
+
+  const dispatch = useDispatch();
+  dispatch(taskActions.getTaskById(task._id));
 }
 
 function closeTaskDesc() {
@@ -38,6 +42,9 @@ function EditTaskLogo() {
 }
 
 function TaskDescForm() {
+  //use selector to get current task Id
+  //const singleTask = useSelector((state) => state.singleTask);
+
   const [taskData, setTaskData] = useState({
     status: "in progress",
     title: "",
@@ -46,7 +53,6 @@ function TaskDescForm() {
   });
 
   const dispatch = useDispatch();
-
   const handleChange = (e) => {
     setTaskData({ ...taskData, [e.target.name]: e.target.value });
   };
@@ -98,12 +104,7 @@ function TaskDescForm() {
             >
               Confirm
             </button>
-            <button
-              onClick={() => dispatch(taskActions.deleteTask())}
-              className="Cancel-button"
-            >
-              Delete
-            </button>
+            <button className="Cancel-button">Delete</button>
           </div>
         </form>
       </div>

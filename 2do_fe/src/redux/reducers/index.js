@@ -13,6 +13,7 @@ const taskReducer = (state = initialState, action) => {
   switch (type) {
     case types.GET_ALL_TASKS_REQUEST:
     case types.ADD_TASKS_REQUEST:
+    case types.GET_SINGLE_TASKS_REQUEST:
       return { ...state, loading: true };
 
     case types.GET_ALL_TASKS_SUCCESS:
@@ -24,6 +25,7 @@ const taskReducer = (state = initialState, action) => {
       };
 
     case types.UPDATE_TASKS_SUCCESS:
+    case types.GET_SINGLE_TASKS_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -31,6 +33,7 @@ const taskReducer = (state = initialState, action) => {
       };
 
     case types.GET_ALL_TASKS_FAILURE:
+    case types.GET_SINGLE_TASKS_FAILURE:
     case types.ADD_TASKS_FAILURE:
       return { ...state, loading: false }; // error: payload
 
