@@ -10,7 +10,7 @@ export function openEditDesc(task) {
   document.getElementById("popUpEditForm").style.display = "block";
 }
 
-export function closeTaskDesc() {
+function closeTaskDesc() {
   document.getElementById("popUpEditForm").style.display = "none";
 }
 

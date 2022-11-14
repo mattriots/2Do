@@ -15,7 +15,7 @@ export function openTaskDesc() {
   document.getElementById("popUpForm").style.display = "block";
 }
 
-export function closeTaskDesc() {
+function closeTaskDesc() {
   document.getElementById("popUpForm").style.display = "none";
 }
 
