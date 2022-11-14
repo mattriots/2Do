@@ -28,13 +28,3 @@ export const DueDate = () => {
     </div>
   );
 };
-
-{
-  /* <input
-        type="text"
-        className="input-date"
-        placeholder="Click here to choose date"
-        // name = "date"
-        // id = "date" />
-      /> */
-}
