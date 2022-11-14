@@ -30,9 +30,9 @@ mongoose
 async function getTasks(status, dueDate) {
   let result;
   if (status === undefined && dueDate === undefined) {
-    result = await taskModel.find();
+    result = await taskModel.find().sort({ dueDate: 1 });
   } else if (status && !dueDate) {
-    result = await findTaskByStatus(status); //Returns just tasks with certain status: Complete, in progress?
+    result = await findTaskByStatus(status);
   } else if (!status && dueDate) {
     result = await findTaskByDueDate(dueDate);
   } else {
@@ -84,15 +84,17 @@ async function findTaskById(id) {
 }
 
 async function findTaskByStatus(status) {
-  return await taskModel.find({ status: status });
+  return await taskModel.find({ status: status }).sort({ dueDate: 1 });
 }
 
 async function findTaskByDueDate(dueDate) {
-  return await taskModel.find({ dueDate: dueDate });
+  return await taskModel.find({ dueDate: dueDate }).sort({ dueDate: 1 });
 }
 
 async function findTaskByStatusAndDueDate(status, dueDate) {
-  return await taskModel.find({ status: status, dueDate: dueDate });
+  return await taskModel
+    .find({ status: status, dueDate: dueDate })
+    .sort({ dueDate: 1 });
 }
 
 exports.getTasks = getTasks;

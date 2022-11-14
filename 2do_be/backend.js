@@ -37,7 +37,7 @@ app.get("/tasks/:id", async (req, res) => {
   if (result === undefined || result.length == 0)
     res.status(404).send("Resource not found.");
   else {
-    res.send({ single_task : result });
+    res.send({ single_task: result });
   }
 });
 
