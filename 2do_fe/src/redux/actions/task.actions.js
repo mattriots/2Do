@@ -28,11 +28,8 @@ const deleteTask = (id) => async (dispatch) => {
   dispatch({ type: types.DELETE_TASKS_REQUEST });
   try {
     let url = "";
-    if (id === undefined) {
-      url = `/tasks/`;
-    } else {
-      url = `/tasks/${id}`;
-    }
+    url = `/tasks/${id}`;
+
     const res = await api.delete(url);
     dispatch({
       type: types.DELETE_TASKS_SUCCESS,
@@ -48,11 +45,8 @@ const getTaskById = (id) => async (dispatch) => {
   dispatch({ type: types.GET_SINGLE_TASKS_REQUEST });
   try {
     let url = "";
-    if (id === undefined) {
-      url = `/tasks/`;
-    } else {
-      url = `/tasks/${id}`;
-    }
+    url = `/tasks/${id}`;
+
     const res = await api.get(url);
     console.log(id);
     dispatch({
