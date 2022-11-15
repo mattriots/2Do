@@ -1,7 +1,7 @@
 import * as types from "../constants/task.constants";
 import api from "../../api";
 
-//geta all task
+//get all task
 const getAllTasks = (status, dueDate) => async (dispatch) => {
   dispatch({ type: types.GET_ALL_TASKS_REQUEST });
   try {
@@ -44,7 +44,7 @@ const addTask = (taskData) => async (dispatch) => {
   }
 };
 
-//Still a work in progress (Not being used yet)
+//Being used
 const deleteTask = (id) => async (dispatch) => {
   dispatch({ type: types.DELETE_TASKS_REQUEST });
   try {
@@ -63,18 +63,16 @@ const deleteTask = (id) => async (dispatch) => {
 
 //Still a work in progress (Not being used yet)
 const getTaskById = (id) => async (dispatch) => {
-  console.log("here");
   dispatch({ type: types.GET_SINGLE_TASKS_REQUEST });
   try {
     let url = "";
     url = `/tasks/${id}`;
-
     const res = await api.get(url);
-    console.log(id);
     dispatch({
       type: types.GET_SINGLE_TASKS_SUCCESS,
       payload: res.data.single_task,
     });
+    console.log(res);
   } catch (error) {
     dispatch({ type: types.GET_SINGLE_TASKS_FAILURE, payload: error });
   }

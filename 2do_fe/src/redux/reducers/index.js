@@ -4,7 +4,6 @@ const initialState = {
   // all tasks
   tasks: [],
   loading: true,
-
   singleTask: null,
 };
 

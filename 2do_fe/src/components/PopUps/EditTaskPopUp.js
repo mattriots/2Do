@@ -5,13 +5,10 @@ import TextField from "@mui/material/TextField";
 import { useDispatch } from "react-redux";
 import taskActions from "../../redux/actions/task.actions";
 
+var id = 0;
 export function openEditDesc(task) {
-  console.log(task._id);
-  //fetch get current task -> store single task
+  id = task._id;
   document.getElementById("popUpEditForm").style.display = "block";
-
-  const dispatch = useDispatch();
-  dispatch(taskActions.getTaskById(task._id));
 }
 
 function closeTaskDesc() {
@@ -44,15 +41,18 @@ function EditTaskLogo() {
 function TaskDescForm() {
   //use selector to get current task Id
   //const singleTask = useSelector((state) => state.singleTask);
+  //dispatch(taskActions.getTaskById(id));
+  //console.log(singleTask);
+
+  const dispatch = useDispatch();
 
   const [taskData, setTaskData] = useState({
-    status: "in progress",
+    status: "",
     title: "",
     description: "",
     dueDate: null,
   });
 
-  const dispatch = useDispatch();
   const handleChange = (e) => {
     setTaskData({ ...taskData, [e.target.name]: e.target.value });
   };
@@ -104,7 +104,14 @@ function TaskDescForm() {
             >
               Confirm
             </button>
-            <button className="Cancel-button">Delete</button>
+            <button
+              className="Cancel-button"
+              onClick={() => {
+                dispatch(taskActions.deleteTask(id));
+              }}
+            >
+              Delete
+            </button>
           </div>
         </form>
       </div>
