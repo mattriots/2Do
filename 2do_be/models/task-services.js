@@ -30,13 +30,11 @@ mongoose
 async function getTasks(status, dueDate) {
   let result;
   if (status === undefined && dueDate === undefined) {
-    result = await taskModel.find().sort({ dueDate: 1 });
+    result = await taskModel.find().sort({status: -1, dueDate: 1 });
   } else if (status && !dueDate) {
     result = await findTaskByStatus(status);
   } else if (!status && dueDate) {
     result = await findTaskByDueDate(dueDate);
-  } else {
-    result = await findTaskByStatusAndDueDate(status, dueDate);
   }
   return result;
 }
@@ -91,11 +89,11 @@ async function findTaskByDueDate(dueDate) {
   return await taskModel.find({ dueDate: dueDate }).sort({ dueDate: 1 });
 }
 
-async function findTaskByStatusAndDueDate(status, dueDate) {
-  return await taskModel
-    .find({ status: status, dueDate: dueDate })
-    .sort({ dueDate: 1 });
-}
+// async function findTaskByStatusAndDueDate(status, dueDate) {
+//   return await taskModel
+//     .find({ status: status, dueDate: dueDate })
+//     .sort({ dueDate: 1 });
+// }
 
 exports.getTasks = getTasks;
 exports.addTask = addTask;
@@ -103,5 +101,5 @@ exports.deleteTask = deleteTask;
 exports.findTaskById = findTaskById;
 exports.findTaskByStatus = findTaskByStatus;
 exports.findTaskByDueDate = findTaskByDueDate;
-exports.findTaskByStatusAndDueDate = findTaskByStatusAndDueDate;
+// exports.findTaskByStatusAndDueDate = findTaskByStatusAndDueDate;
 exports.updateTask = updateTask;
