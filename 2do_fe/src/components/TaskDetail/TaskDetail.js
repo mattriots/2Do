@@ -13,6 +13,7 @@ export default function TaskDetail({ task }) {
   // useEffect(() => {
   //   dispatch(taskActions.getTaskById(task._id));
   // }, [dispatch]);
+  // const selector = useSelector()
 
   return (
     <>
@@ -25,6 +26,8 @@ export default function TaskDetail({ task }) {
           />
           <button
             className="pl-2 capitalize"
+            //Will need to add the current task to the store here
+
             onClick={() => openEditDesc(task)}
           >
             {task.title}

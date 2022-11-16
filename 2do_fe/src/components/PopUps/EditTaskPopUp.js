@@ -108,6 +108,7 @@ function TaskDescForm() {
               className="Cancel-button"
               onClick={() => {
                 dispatch(taskActions.deleteTask(id));
+                window.location.reload();
               }}
             >
               Delete
