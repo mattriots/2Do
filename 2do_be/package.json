@@ -5,7 +5,8 @@
   "main": "backend.js",
   "scripts": {
     "test": "prettier --check .",
-    "jest_test": "jest",
+    "jest_test": "jest -- -t \"task-services.test.js\" --forceExit",
+    "coverage": "jest --collectCoverage -- -t \"task-services.test.js\" --forceExit",
     "dev": "nodemon backend.js",
     "start": "node backend.js",
     "pretty": "prettier --write \"./**/*.{js,jsx,json}\""
