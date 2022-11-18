@@ -30,7 +30,7 @@ mongoose
 async function getTasks(status, dueDate) {
   let result;
   if (status === undefined && dueDate === undefined) {
-    result = await taskModel.find().sort({status: -1, dueDate: 1 });
+    result = await taskModel.find().sort({ status: -1, dueDate: 1 });
   } else if (status && !dueDate) {
     result = await findTaskByStatus(status);
   } else if (!status && dueDate) {

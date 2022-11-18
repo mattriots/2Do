@@ -5,7 +5,7 @@
   "main": "backend.js",
   "scripts": {
     "test": "prettier --check .",
-    "jest_test": "jest",
+    "jest_test": "jest --forceExit",
     "coverage": "jest --collectCoverage --forceExit",
     "dev": "nodemon backend.js",
     "start": "node backend.js",
