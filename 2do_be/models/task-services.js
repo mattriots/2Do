@@ -24,8 +24,7 @@ mongoose
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }
-  )
-  .catch((error) => console.log(error));
+  );
 
 async function getTasks(status, dueDate) {
   let result;
@@ -51,34 +50,15 @@ async function addTask(status, title, desc, dueDate) {
 }
 
 async function deleteTask(id) {
-  try {
-    let result;
-    result = await taskModel.findByIdAndDelete(id);
-    console.log(result);
-    return result;
-  } catch (error) {
-    console.log(error);
-    return undefined;
-  }
+  return await taskModel.findByIdAndDelete(id);
 }
 
 async function updateTask(id, body) {
-  try {
-    let updatedTask = await taskModel.findByIdAndUpdate(id, body);
-    return updatedTask;
-  } catch (error) {
-    console.log(error);
-    return false;
-  }
+  return await taskModel.findByIdAndUpdate(id, body);
 }
 
 async function findTaskById(id) {
-  try {
-    return await taskModel.findById(id);
-  } catch (error) {
-    console.log(error);
-    return undefined;
-  }
+  return await taskModel.findById(id);
 }
 
 async function findTaskByStatus(status) {
@@ -89,17 +69,10 @@ async function findTaskByDueDate(dueDate) {
   return await taskModel.find({ dueDate: dueDate }).sort({ dueDate: 1 });
 }
 
-// async function findTaskByStatusAndDueDate(status, dueDate) {
-//   return await taskModel
-//     .find({ status: status, dueDate: dueDate })
-//     .sort({ dueDate: 1 });
-// }
-
 exports.getTasks = getTasks;
 exports.addTask = addTask;
 exports.deleteTask = deleteTask;
 exports.findTaskById = findTaskById;
 exports.findTaskByStatus = findTaskByStatus;
 exports.findTaskByDueDate = findTaskByDueDate;
-// exports.findTaskByStatusAndDueDate = findTaskByStatusAndDueDate;
 exports.updateTask = updateTask;
