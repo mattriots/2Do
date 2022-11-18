@@ -5,8 +5,8 @@
   "main": "backend.js",
   "scripts": {
     "test": "prettier --check .",
-    "jest_test": "jest -- -t \"task-services.test.js\" --forceExit",
-    "coverage": "jest --collectCoverage -- -t \"task-services.test.js\" --forceExit",
+    "jest_test": "jest",
+    "coverage": "jest --collectCoverage --forceExit",
     "dev": "nodemon backend.js",
     "start": "node backend.js",
     "pretty": "prettier --write \"./**/*.{js,jsx,json}\""
@@ -17,6 +17,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "mongodb-memory-server": "^8.10.0",
     "mongoose": "^6.7.1"
   },
   "devDependencies": {
