@@ -30,5 +30,4 @@ jobs:
       - run: npm run build --if-present
       - run: npm run pretty
       - run: npm run pretty_test
-      - run: npm run jest_test
       
