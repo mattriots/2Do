@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import logo from "../../logo_2do.png";
 import "./AddTask.css";
 
@@ -8,7 +8,7 @@ import "./AddTask.css";
 // import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 
 import TextField from "@mui/material/TextField";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import taskActions from "../../redux/actions/task.actions";
 
 export function openTaskDesc() {
@@ -53,8 +53,8 @@ function TaskDescForm() {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    setTaskData({ ...taskData, [e.target.name]: e.target.value});
-  }
+    setTaskData({ ...taskData, [e.target.name]: e.target.value });
+  };
 
   return (
     <center>
@@ -68,7 +68,7 @@ function TaskDescForm() {
             name="title"
             value={taskData.title}
             placeholder="Enter task title"
-            onChange = {handleChange}
+            onChange={handleChange}
           />
 
           <label htmlFor="description">Description</label>
@@ -76,37 +76,37 @@ function TaskDescForm() {
             className="textfieldstyle"
             type="text"
             name="description"
-            value={taskData.description} 
+            value={taskData.description}
             placeholder="Enter task description"
             multiline
             rows={4}
-            onChange = {handleChange}
+            onChange={handleChange}
           />
 
           {/* <DueDate /> */}
           <label htmlFor="date">Due Date</label>
-            <TextField
-              className="textfieldstyle"
-              type = "text"
-              name = "dueDate"
-              placeholder="MM/DD/YYYY"
-              value={taskData.dueDate}
-              onChange={handleChange}
-            />
+          <TextField
+            className="textfieldstyle"
+            type="text"
+            name="dueDate"
+            placeholder="MM/DD/YYYY"
+            value={taskData.dueDate}
+            onChange={handleChange}
+          />
 
           <div className="Button-container">
-          <button onClick= { ()=> {
-            dispatch(taskActions.addTask(taskData));
-            }}
-            className="Add-button">
-            Confirm
-          </button>
-          <button onClick={closeTaskDesc} className="Cancel-button">
-            Cancel
-          </button>
-        </div>
-        
-
+            <button
+              onClick={() => {
+                dispatch(taskActions.addTask(taskData));
+              }}
+              className="Add-button"
+            >
+              Confirm
+            </button>
+            <button onClick={closeTaskDesc} className="Cancel-button">
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     </center>
@@ -114,7 +114,6 @@ function TaskDescForm() {
 }
 
 function AddTaskPopUp() {
-  
   return (
     <center>
       <div className="taskForm" id="popUpForm">

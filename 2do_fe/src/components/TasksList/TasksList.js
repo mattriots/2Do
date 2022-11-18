@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import AddTask from "../AddTask/AddTask";
+import AddTask from "../PopUps/AddTask";
 import TaskDetail from "../TaskDetail/TaskDetail";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
 import logo from "../../logo_2do.png";
 import taskActions from "../../redux/actions/task.actions";
 import ViewTaskBy from "../ViewTaskBy/ViewTaskBy";
+import Edit from "../PopUps/EditTaskPopUp";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 
 function TasksList() {
   const dispatch = useDispatch();
@@ -43,6 +44,11 @@ function TasksList() {
               </div>
             )}
             <AddTask />
+            {true && (
+              <div className="editTaskPopUp">
+                <Edit />
+              </div>
+            )}
           </Box>
         </div>
       </div>
