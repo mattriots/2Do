@@ -31,4 +31,8 @@ jobs:
       - run: npm run pretty
       - run: npm run pretty_test
       - run: npm run jest_test
-      
+        env: 
+            MONGO_USER: ${{ secrets.MONGO_USER }}
+            MONGO_PWD: ${{ secrets.MONGO_PWD }}
+            MONGO_CLUSTER: ${{ secrets.MONGO_CLUSTER }}
+            MONGO_DB:  ${{ secrets.MONGO_DB }}
