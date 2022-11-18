@@ -30,7 +30,8 @@ jobs:
           npm install
           npm run pretty
           npm run build --if-present
-          npm run test --if-present
+          npm run pretty_test --if-present
+          npm run jest_test --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
