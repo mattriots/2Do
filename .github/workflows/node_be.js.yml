@@ -12,6 +12,7 @@ defaults:
 
 jobs:
   build:
+    environment: CI
     runs-on: ubuntu-latest
 
     strategy:
@@ -31,10 +32,10 @@ jobs:
       - run: npm run pretty_test
       - name: Run Jest Test
         env: 
-            MONGO_USER: ${{ secrets.MONGO_USER }}
-            MONGO_PWD: ${{ secrets.MONGO_PWD }}
-            MONGO_CLUSTER: ${{ secrets.MONGO_CLUSTER }}
-            MONGO_DB:  ${{ secrets.MONGO_DB }}
-        run: npm run jest_test --ci --silent
+          MONGO_USER: ${{ secrets.MONGO_USER }}
+          MONGO_PWD: ${{ secrets.MONGO_PWD }}
+          MONGO_CLUSTER: ${{ secrets.MONGO_CLUSTER }}
+          MONGO_DB:  ${{ secrets.MONGO_DB }}
+        run: npm run jest_test
       
        
