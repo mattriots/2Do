@@ -24,9 +24,7 @@ app.get("/tasks", async (req, res) => {
   try {
     const result = await taskServices.getTasks(status, dueDate);
     res.send({ task_list: result });
-    console.log(result);
   } catch (error) {
-    console.log(error);
     res.status(500).send("An error ocurred in the server.");
   }
 });

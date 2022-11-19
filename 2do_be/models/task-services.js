@@ -6,7 +6,7 @@ dotenv.config({
   path: "../.env",
 });
 
-mongoose.set("debug", true);
+// mongoose.set("debug", true);
 
 mongoose
   .connect(
