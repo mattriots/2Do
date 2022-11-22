@@ -12,6 +12,7 @@ defaults:
 
 jobs:
   build:
+    environment: Production
     runs-on: ubuntu-latest
 
     strategy:
@@ -24,10 +25,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      
+    
       - run: npm ci
       - run: npm run build --if-present
       - run: npm run pretty
-      - run: npm test
+      - run: npm run pretty_test
+      - name: Run For Coverage
+        env: 
+          MONGO_USER: ${{ secrets.MONGO_USER }}
+          MONGO_PWD: ${{ secrets.MONGO_PWD }}
+          MONGO_CLUSTER: ${{ secrets.MONGO_CLUSTER }}
+          MONGO_DB:  ${{ secrets.MONGO_DB }}
+        run: npm run coverage
       
+       
