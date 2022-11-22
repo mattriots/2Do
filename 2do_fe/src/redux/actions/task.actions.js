@@ -51,10 +51,10 @@ const deleteTask = (id) => async (dispatch) => {
     let url = "";
     url = `/tasks/${id}`;
 
-    const res = await api.delete(url);
+    await api.delete(url);
     dispatch({
       type: types.DELETE_TASKS_SUCCESS,
-      payload: res.data.task_list,
+      id: id,
     });
   } catch (error) {
     dispatch({ type: types.DELETE_TASKS_FAILURE, payload: error });

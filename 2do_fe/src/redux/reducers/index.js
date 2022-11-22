@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const taskReducer = (state = initialState, action) => {
-  const { type, payload } = action;
+  const { type, payload, id } = action;
   switch (type) {
     case types.GET_ALL_TASKS_REQUEST:
     case types.ADD_TASKS_REQUEST:
@@ -17,12 +17,18 @@ const taskReducer = (state = initialState, action) => {
       return { ...state, loading: true };
 
     case types.GET_ALL_TASKS_SUCCESS:
-    case types.DELETE_TASKS_SUCCESS:
     case types.ADD_TASKS_SUCCESS:
       return {
         ...state,
         loading: false,
         tasks: payload,
+      };
+
+    case types.DELETE_TASKS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        tasks: state.tasks.filter((task) => task._id !== id),
       };
 
     case types.UPDATE_TASKS_SUCCESS:
