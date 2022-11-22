@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../logo_2do.png";
 import "../PopUps/AddTask.css";
 import TextField from "@mui/material/TextField";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import taskActions from "../../redux/actions/task.actions";
 
-var id = 0;
-export function openEditDesc(task) {
-  id = task._id;
+export async function openEditDesc(task, dispatch) {
+  await dispatch(taskActions.getTaskById(task._id));
   document.getElementById("popUpEditForm").style.display = "block";
 }
 
@@ -39,10 +38,8 @@ function EditTaskLogo() {
 }
 
 function TaskDescForm() {
-  //use selector to get current task Id
-  //const singleTask = useSelector((state) => state.singleTask);
-  //dispatch(taskActions.getTaskById(id));
-  //console.log(singleTask);
+  //use selector to get current task
+  const singleTask = useSelector((state) => state.singleTask);
 
   const dispatch = useDispatch();
 
@@ -52,6 +49,16 @@ function TaskDescForm() {
     description: "",
     dueDate: null,
   });
+
+  //only display tasks not null
+  useEffect(() => {
+    setTaskData({
+      status: singleTask?.status,
+      title: singleTask?.title,
+      description: singleTask?.description,
+      dueDate: singleTask?.dueDate,
+    });
+  }, [singleTask]);
 
   const handleChange = (e) => {
     setTaskData({ ...taskData, [e.target.name]: e.target.value });
@@ -107,8 +114,7 @@ function TaskDescForm() {
             <button
               className="Cancel-button"
               onClick={() => {
-                dispatch(taskActions.deleteTask(id));
-                window.location.reload();
+                dispatch(taskActions.deleteTask(singleTask._id));
               }}
             >
               Delete

@@ -61,7 +61,7 @@ const deleteTask = (id) => async (dispatch) => {
   }
 };
 
-//Still a work in progress (Not being used yet)
+//Being used
 const getTaskById = (id) => async (dispatch) => {
   dispatch({ type: types.GET_SINGLE_TASKS_REQUEST });
   try {

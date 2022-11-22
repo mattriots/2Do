@@ -1,20 +1,14 @@
 import React from "react";
-//import { useDispatch } from "react-redux";
 import ProgressIcon from "./ProgressIcon.svg";
 import FinishIcon from "./FinishIcon.svg";
 import StageButton from "../Done/StageButton.js";
 import { openEditDesc } from "../PopUps/EditTaskPopUp";
 //import { openTaskDesc } from "../AddTask/AddTaskPopUp.js";
 import Moment from "react-moment";
+import { useDispatch } from "react-redux";
 
-/* eslint-disable */
 export default function TaskDetail({ task }) {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(taskActions.getTaskById(task._id));
-  // }, [dispatch]);
-  // const selector = useSelector()
-
+  const dispatch = useDispatch();
   return (
     <>
       <div className="grid grid-cols-5 gap-3">
@@ -26,9 +20,7 @@ export default function TaskDetail({ task }) {
           />
           <button
             className="pl-2 capitalize"
-            //Will need to add the current task to the store here
-
-            onClick={() => openEditDesc(task)}
+            onClick={() => openEditDesc(task, dispatch)}
           >
             {task.title}
           </button>
