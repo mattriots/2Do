@@ -14,7 +14,7 @@ function ViewTaskBy() {
   }
 
   return (
-    <div className="text-left text-lg pl-5 pt-2 ">
+    <div className="text-left pl-5 ">
       Show
       <Menu as="div" className="relative inline-block text-left ml-3">
         <div>

@@ -5,9 +5,10 @@ import TaskDetail from "../TaskDetail/TaskDetail";
 import logo from "../../logo_2do.png";
 import taskActions from "../../redux/actions/task.actions";
 import ViewTaskBy from "../ViewTaskBy/ViewTaskBy";
-import Edit from "../PopUps/EditTaskPopUp";
+// import Edit from "../PopUps/EditTaskPopUp";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import "../PopUps/AddTask.css"
 
 function TasksList() {
   const dispatch = useDispatch();
@@ -44,11 +45,11 @@ function TasksList() {
               </div>
             )}
             <AddTask />
-            {true && (
+            {/* {true && (
               <div className="editTaskPopUp">
                 <Edit />
               </div>
-            )}
+            )} */}
           </Box>
         </div>
       </div>

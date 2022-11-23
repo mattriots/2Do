@@ -1,12 +1,14 @@
 import React from "react";
-//import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import ProgressIcon from "./ProgressIcon.svg";
 import FinishIcon from "./FinishIcon.svg";
 import StageButton from "../Done/StageButton.js";
 import { openEditDesc } from "../PopUps/EditTaskPopUp";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
-//import { openTaskDesc } from "../AddTask/AddTaskPopUp.js";
+// import { openTaskDesc } from "../AddTask/AddTaskPopUp.js";
 import Moment from "react-moment";
+// import taskActions from "../../redux/actions/task.actions";
+
 
 /* eslint-disable */
 export default function TaskDetail({ task }) {
@@ -16,7 +18,6 @@ export default function TaskDetail({ task }) {
   //   dispatch(taskActions.getTaskById(task._id));
   // }, [dispatch]);
   // const selector = useSelector()
-
   return (
     <>
       <div
@@ -58,7 +59,11 @@ export default function TaskDetail({ task }) {
                 : StageButton("inprogress", "In Progress")}
             </div>
             <div className="pr-5">
-              <RemoveCircleIcon />
+              <RemoveCircleIcon/>
+              {/* onClick={() => {
+                dispatch(taskActions.deleteTask(task._id));
+                window.location.reload();
+              }}/> */}
             </div>
           </div>
         ) : (

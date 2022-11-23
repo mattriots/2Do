@@ -2,7 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "http://localhost:5001",
-  //baseURL: "https://2do-307.azurewebsites.net/",
+  // baseURL: "https://2do-307.azurewebsites.net/",
   // baseURL: process.env.REACT_APP_BACKEND_API,
   headers: {
     "Content-Type": "application/json",
