@@ -37,10 +37,10 @@ function TaskDescForm(props) {
      });
   };
 
-  const handleSubmit = () => {
-    //e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.setTrigger_1(false);
     dispatch(taskActions.addTask(taskData));
-    // props.setTrigger_1(false);
   }
 
 
