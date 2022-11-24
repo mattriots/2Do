@@ -105,7 +105,7 @@ function TaskDescForm() {
           <div className="Button-container">
             <button
               onClick={() => {
-                dispatch(taskActions.addTask(taskData));
+                dispatch(taskActions.updateTaskById(taskData, singleTask._id));
               }}
               className="Add-button"
             >

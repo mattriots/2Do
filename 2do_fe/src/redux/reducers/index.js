@@ -13,6 +13,7 @@ const taskReducer = (state = initialState, action) => {
     case types.GET_ALL_TASKS_REQUEST:
     case types.ADD_TASKS_REQUEST:
     case types.DELETE_TASKS_REQUEST:
+    case types.UPDATE_TASKS_REQUEST:
     case types.GET_SINGLE_TASKS_REQUEST:
       return { ...state, loading: true };
 
@@ -40,6 +41,7 @@ const taskReducer = (state = initialState, action) => {
       };
 
     case types.GET_ALL_TASKS_FAILURE:
+    case types.UPDATE_TASKS_FAILURE:
     case types.GET_SINGLE_TASKS_FAILURE:
     case types.DELETE_TASKS_FAILURE:
     case types.ADD_TASKS_FAILURE:

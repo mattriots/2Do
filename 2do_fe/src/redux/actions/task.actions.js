@@ -78,7 +78,32 @@ const getTaskById = (id) => async (dispatch) => {
   }
 };
 
+//Not being used yet
+const updateTaskById = (taskData, id) => async (dispatch) => {
+  dispatch({ type: types.UPDATE_TASKS_REQUEST });
+  try {
+    let url = "";
+    url = `/tasks/${id}`;
+
+    const res = await api.put(url, {
+      status: taskData.status,
+      title: taskData.title,
+      description: taskData.description,
+      dueDate: taskData.dueDate,
+    });
+
+    dispatch({
+      type: types.UPDATE_TASKS_SUCCESS,
+      payload: res.data.single_task,
+    });
+    console.log(res);
+  } catch (error) {
+    dispatch({ type: types.UPDATE_TASKS_FAILURE, payload: error });
+  }
+};
+
 const taskActions = {
+  updateTaskById,
   getAllTasks,
   addTask,
   getTaskById,
