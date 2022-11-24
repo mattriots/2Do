@@ -77,7 +77,6 @@ function TaskDescForm(props) {
           <label htmlFor="date">Due Date</label>
           <LocalizationProvider dateAdapter = {AdapterDayjs}>
             <DesktopDatePicker
-              //label = "Due Date"
               inputFormat = "MM/DD/YYYY"
               value = {dateValue}
               onChange = {handleDateChange}
@@ -121,7 +120,6 @@ function AddTask() {
           <img
             src={AddTaskIcon}
             alt="Add task icon"
-            // onClick={openTaskDesc}
             onClick = {()=>{setIsOpen(true)}}
             className="cursor-pointer"
           />

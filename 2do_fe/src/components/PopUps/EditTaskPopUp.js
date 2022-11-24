@@ -26,7 +26,7 @@ function TaskDescForm() {
   //console.log(singleTask);
 
   const [taskData, setTaskData] = useState({
-    status: "completed",
+    status: "in progress",
     title: "",
     description: "",
     dueDate: null,
