@@ -7,6 +7,7 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 //import { openTaskDesc } from "../AddTask/AddTaskPopUp.js";
 import Moment from "react-moment";
 import { useDispatch } from "react-redux";
+import taskActions from "../../redux/actions/task.actions";
 
 export default function TaskDetail({ task }) {
   const dispatch = useDispatch();
@@ -51,7 +52,9 @@ export default function TaskDetail({ task }) {
                 : StageButton("inprogress", "In Progress")}
             </div>
             <div className="pr-5">
-              <RemoveCircleIcon />
+              <RemoveCircleIcon
+                onClick={() => dispatch(taskActions.deleteTask(task._id))}
+              />
             </div>
           </div>
         ) : (

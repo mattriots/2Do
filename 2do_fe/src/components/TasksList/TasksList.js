@@ -44,11 +44,11 @@ function TasksList() {
               </div>
             )}
             <AddTask />
-            {true && (
+            {
               <div className="editTaskPopUp">
                 <Edit />
               </div>
-            )}
+            }
           </Box>
         </div>
       </div>
