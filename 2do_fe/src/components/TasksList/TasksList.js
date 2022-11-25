@@ -6,10 +6,13 @@ import logo from "../../logo_2do.png";
 import taskActions from "../../redux/actions/task.actions";
 import ViewTaskBy from "../ViewTaskBy/ViewTaskBy";
 import Edit from "../PopUps/EditTaskPopUp";
+
+
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 
 function TasksList() {
+
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.tasks);
   const loading = useSelector((state) => state.loading);
@@ -39,16 +42,17 @@ function TasksList() {
             ) : (
               <div className="overflow-scroll h-[33rem]">
                 {tasks.map((task, index) => (
-                  <TaskDetail key={index} task={task} />
+                  <TaskDetail key={index} task={task}/>
                 ))}
               </div>
             )}
             <AddTask />
             {
-              <div className="editTaskPopUp">
-                <Edit />
-              </div>
+            <div className="editTaskPopUp">
+              <Edit/>
+            </div>
             }
+            
           </Box>
         </div>
       </div>

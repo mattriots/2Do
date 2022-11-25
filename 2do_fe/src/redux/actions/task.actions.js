@@ -37,7 +37,7 @@ const addTask = (taskData) => async (dispatch) => {
 
     dispatch({
       type: types.ADD_TASKS_SUCCESS,
-      payload: res.data.task_list,
+      payload: res.data,
     });
   } catch (error) {
     dispatch({ type: types.ADD_TASKS_FAILURE, payload: error });

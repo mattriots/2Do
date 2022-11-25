@@ -4,7 +4,6 @@
 }
 
 .taskForm {
-  display: none;
   position: relative;
   max-width: 60%;
   min-height: 680px;
@@ -14,10 +13,8 @@
 }
 
 .formContainer {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
 }
 
 /*IN FORM POPUP HEADER*/

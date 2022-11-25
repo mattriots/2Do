@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import ProgressIcon from "./ProgressIcon.svg";
 import FinishIcon from "./FinishIcon.svg";
 import StageButton from "../Done/StageButton.js";
 import { openEditDesc } from "../PopUps/EditTaskPopUp";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
-//import { openTaskDesc } from "../AddTask/AddTaskPopUp.js";
 import Moment from "react-moment";
 import { useDispatch } from "react-redux";
 import taskActions from "../../redux/actions/task.actions";
 
-export default function TaskDetail({ task }) {
+export default function TaskDetail(props) {
+
   const dispatch = useDispatch();
-  const [isShownDelete, setIsShownDelete] = React.useState(false);
+  const [isShownDelete, setIsShownDelete] = useState(false);
 
   return (
     <>
@@ -29,43 +29,48 @@ export default function TaskDetail({ task }) {
         <div className="py-2 justify-self-start pl-5 flex col-span-2 w-80 items-center">
           <input
             type="image"
-            src={task.status === "completed" ? FinishIcon : ProgressIcon}
+            src={props.task.status === "completed" ? FinishIcon : ProgressIcon}
             alt="progress icon"
           />
           <button
             className="pl-2 capitalize"
-            onClick={() => openEditDesc(task, dispatch)}
+            onClick = {() => {
+              // dispatch(taskActions.getTaskById(props.task._id));
+              openEditDesc(props.task, dispatch);
+              }}
           >
-            {task.title}
+            {props.task.title}
           </button>
         </div>
         <div className="py-2 flex justify-center">
           <div className="border w-24 h-10 text-center py-2">
-            <Moment format="MMM DD">{task.dueDate}</Moment>
+            <Moment format="MMM DD">{props.task.dueDate}</Moment>
           </div>
         </div>
         {isShownDelete ? (
           <div className="py-2 justify-self-end col-span-2 flex">
             <div className="pr-4">
-              {task.status === "completed"
+              {props.task.status === "completed"
                 ? StageButton("complete", "Done")
                 : StageButton("inprogress", "In Progress")}
             </div>
             <div className="pr-5">
               <RemoveCircleIcon
-                onClick={() => dispatch(taskActions.deleteTask(task._id))}
+                onClick={() => {dispatch(taskActions.deleteTask(props.task._id));
+                 }}
               />
             </div>
           </div>
         ) : (
           <div className="py-2 justify-self-end pr-14 col-span-2">
-            {task.status === "completed"
+            {props.task.status === "completed"
               ? StageButton("complete", "Done")
               : StageButton("inprogress", "In Progress")}
           </div>
         )}
       </div>
       <div className="mx-11 border-t-2"></div>
-    </>
+      
+      </>
   );
 }
