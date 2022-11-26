@@ -9,6 +9,21 @@ import Moment from "react-moment";
 import { useDispatch } from "react-redux";
 import taskActions from "../../redux/actions/task.actions";
 
+function toggleProgress(task, dispatch) {
+  dispatch(
+    taskActions.updateTaskById(
+      {
+        ...task,
+        status:
+          task.status === "completed"
+            ? (task.status = "in progress")
+            : (task.status = "completed"),
+      },
+      task._id
+    )
+  );
+}
+
 export default function TaskDetail({ task }) {
   const dispatch = useDispatch();
   const [isShownDelete, setIsShownDelete] = React.useState(false);
@@ -29,6 +44,7 @@ export default function TaskDetail({ task }) {
         <div className="py-2 justify-self-start pl-5 flex col-span-2 w-80 items-center">
           <input
             type="image"
+            onClick={() => toggleProgress(task, dispatch)}
             src={task.status === "completed" ? FinishIcon : ProgressIcon}
             alt="progress icon"
           />
