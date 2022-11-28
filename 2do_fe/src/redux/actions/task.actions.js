@@ -37,7 +37,7 @@ const addTask = (taskData) => async (dispatch) => {
 
     dispatch({
       type: types.ADD_TASKS_SUCCESS,
-      payload: res.data.task_list,
+      payload: res.data,
     });
   } catch (error) {
     dispatch({ type: types.ADD_TASKS_FAILURE, payload: error });
@@ -51,17 +51,17 @@ const deleteTask = (id) => async (dispatch) => {
     let url = "";
     url = `/tasks/${id}`;
 
-    const res = await api.delete(url);
+    await api.delete(url);
     dispatch({
       type: types.DELETE_TASKS_SUCCESS,
-      payload: res.data.task_list,
+      id: id,
     });
   } catch (error) {
     dispatch({ type: types.DELETE_TASKS_FAILURE, payload: error });
   }
 };
 
-//Still a work in progress (Not being used yet)
+//Being used
 const getTaskById = (id) => async (dispatch) => {
   dispatch({ type: types.GET_SINGLE_TASKS_REQUEST });
   try {
@@ -78,7 +78,32 @@ const getTaskById = (id) => async (dispatch) => {
   }
 };
 
+//Not being used yet
+const updateTaskById = (taskData, id) => async (dispatch) => {
+  dispatch({ type: types.UPDATE_TASKS_REQUEST });
+  try {
+    let url = "";
+    url = `/tasks/${id}`;
+
+    const res = await api.put(url, {
+      status: taskData.status,
+      title: taskData.title,
+      description: taskData.description,
+      dueDate: taskData.dueDate,
+    });
+
+    dispatch({
+      type: types.UPDATE_TASKS_SUCCESS,
+      payload: res.data.single_task,
+    });
+    console.log(res);
+  } catch (error) {
+    dispatch({ type: types.UPDATE_TASKS_FAILURE, payload: error });
+  }
+};
+
 const taskActions = {
+  updateTaskById,
   getAllTasks,
   addTask,
   getTaskById,

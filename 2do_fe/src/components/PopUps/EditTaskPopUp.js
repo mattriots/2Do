@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../logo_2do.png";
-import "../PopUps/AddTask.css";
 import TextField from "@mui/material/TextField";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import taskActions from "../../redux/actions/task.actions";
+import "../PopUps/EditTask.css";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
-var id = 0;
-export function openEditDesc(task) {
-  id = task._id;
+
+
+
+export function openEditDesc() {
+  //await dispatch(taskActions.getTaskById(task._id));
   document.getElementById("popUpEditForm").style.display = "block";
 }
 
@@ -15,34 +20,12 @@ function closeTaskDesc() {
   document.getElementById("popUpEditForm").style.display = "none";
 }
 
-export function TaskFormHeader() {
-  return (
-    <header className="TaskForm-header">
-      <p className="FormHeader-text">Edit Task Details</p>
-      <button onClick={closeTaskDesc} className="exit-button">
-        X
-      </button>
-    </header>
-  );
-}
-
-function EditTaskLogo() {
-  return (
-    <center>
-      <div id="logo-container">
-        <div className="AddTask-Logo">
-          <img src={logo} className="AddTask-logo" alt="logo" />
-        </div>
-      </div>
-    </center>
-  );
-}
 
 function TaskDescForm() {
-  //use selector to get current task Id
-  //const singleTask = useSelector((state) => state.singleTask);
-  //dispatch(taskActions.getTaskById(id));
-  //console.log(singleTask);
+  //use selector to get current task
+  const singleTask = useSelector((state) => state.singleTask);
+  const [dateValue, setDate] = useState(singleTask?.dueDate);
+
 
   const dispatch = useDispatch();
 
@@ -53,21 +36,43 @@ function TaskDescForm() {
     dueDate: null,
   });
 
+  const handleDateChange = (newDateValue) => {
+    setDate(newDateValue);
+    setTaskData({
+      ...taskData, 
+      dueDate: newDateValue,});
+  };
+
+  //only display tasks not null
+  useEffect(() => {
+    setTaskData({
+      status: singleTask?.status,
+      title: singleTask?.title,
+      description: singleTask?.description,
+      dueDate: singleTask?.dueDate,
+    });
+  }, [singleTask]);
+
   const handleChange = (e) => {
     setTaskData({ ...taskData, [e.target.name]: e.target.value });
   };
+  
+  const handleSubmit = () => {
+    closeTaskDesc;
+    dispatch(taskActions.updateTaskById(taskData, singleTask._id));
+  }
 
   return (
     <center>
       <div id="Form-container">
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="title">Title</label>
           <TextField
             required
             className="textfieldstyle"
             type="text"
             name="title"
-            value={taskData.title}
+            value={taskData.title || ""}
             placeholder="Enter task title"
             onChange={handleChange}
           />
@@ -77,29 +82,35 @@ function TaskDescForm() {
             className="textfieldstyle"
             type="text"
             name="description"
-            value={taskData.description}
+            value={taskData.description || ""}
             placeholder="Enter task description"
             multiline
             rows={4}
             onChange={handleChange}
           />
 
-          {/* <DueDate /> */}
+          {/* DATE INPUT */}
           <label htmlFor="date">Due Date</label>
-          <TextField
-            className="textfieldstyle"
-            type="text"
-            name="dueDate"
-            placeholder="MM/DD/YYYY"
-            value={taskData.dueDate}
-            onChange={handleChange}
-          />
+          <LocalizationProvider dateAdapter = {AdapterDayjs}>
+            <DesktopDatePicker
+              inputFormat = "MM/DD/YYYY"
+              value = {dateValue}
+              onChange = {handleDateChange}
+              renderInput = {
+                (params) => 
+                <TextField 
+                name = "dueDate"
+                {...params}
+                className="textfieldstyle" 
+                id="duedate"
+                />
+              }
+              />
+          </LocalizationProvider>
 
           <div className="Button-container">
             <button
-              onClick={() => {
-                dispatch(taskActions.addTask(taskData));
-              }}
+              type = "submit"
               className="Add-button"
             >
               Confirm
@@ -107,8 +118,8 @@ function TaskDescForm() {
             <button
               className="Cancel-button"
               onClick={() => {
-                dispatch(taskActions.deleteTask(id));
-                window.location.reload();
+                // e.preventDefault();
+                dispatch(taskActions.deleteTask(singleTask._id));
               }}
             >
               Delete
@@ -121,20 +132,37 @@ function TaskDescForm() {
 }
 
 export function Edit() {
+  
   return (
+    <div className="editTaskPopUp">
     <center>
-      <div className="taskForm" id="popUpEditForm">
-        <form action="" className="formContainer">
-          <h2>
-            <TaskFormHeader />
-          </h2>
-          <body>
-            <EditTaskLogo />
-            <TaskDescForm />
-          </body>
-        </form>
+      <div className="edittaskForm" id = "popUpEditForm">
+        <div className="editformContainer">
+          {/* FORM HEADER */}
+          <header className="TaskForm-header">
+            <p className="FormHeader-text">Edit Task Details</p>
+            <button onClick={closeTaskDesc} className="exit-button">
+              X
+            </button>
+          </header>
+
+          <div>
+            {/* SPINNING LOGO */}
+            <center>
+              <div id="logo-container">
+                <div className="AddTask-Logo">
+                  <img src={logo} className="AddTask-logo" alt="logo" />
+                </div>
+              </div>
+            </center>
+
+            {/* INPUT FORM */}
+            <TaskDescForm/>
+          </div>
+        </div>
       </div>
     </center>
+    </div>
   );
 }
 

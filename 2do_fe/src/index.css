@@ -15,3 +15,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+.colorpicker {
+  position: fixed;
+  background-color: snow;
+  border-radius: 10px;
+  top: 10px;
+  left: 20px;
+  transform: scale(1.5);
+  color: rgb(92, 4, 4)
+}
+
+.colorpicker:hover {
+  opacity: 100;
+  background-color: rgb(244, 208, 218);
+}
+
+.pickerblock { 
+  position:fixed;
+  top: 20px;
+  left: 30px;
+}
+
+.set-color-button{
+  width: 220px;
+  background: rgb(255, 255, 255);
+  border-radius: 4px;
+  box-shadow: rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px;
+}
+
+.set-color-button:hover{
+  opacity: 100;
+  background-color: rgb(244, 208, 218);
+}
