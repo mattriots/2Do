@@ -15,6 +15,10 @@ https://www.figma.com/file/uHDBQEXPRQJdATXyNeKNJw/2Do_307?node-id=0%3A1
 
 https://github.com/users/mattriots/projects/2/views/1
 
+## `Diagrams`
+
+https://github.com/mattriots/2Do/wiki
+
 ## `Project Build badges`
 
 ![Backend](https://github.com/mattriots/2Do/actions/workflows/node_be.js.yml/badge.svg)
