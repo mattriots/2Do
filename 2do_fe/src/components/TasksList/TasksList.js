@@ -47,12 +47,7 @@ function TasksList() {
               </div>
             )}
             <AddTask />
-            {
-            <div className="editTaskPopUp">
-              <Edit/>
-            </div>
-            }
-            
+            <Edit/>
           </Box>
         </div>
       </div>

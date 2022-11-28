@@ -11,8 +11,8 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 
 
-export async function openEditDesc(task, dispatch) {
-  await dispatch(taskActions.getTaskById(task._id));
+export function openEditDesc() {
+  //await dispatch(taskActions.getTaskById(task._id));
   document.getElementById("popUpEditForm").style.display = "block";
 }
 
@@ -72,7 +72,7 @@ function TaskDescForm() {
             className="textfieldstyle"
             type="text"
             name="title"
-            value={taskData.title}
+            value={taskData.title || ""}
             placeholder="Enter task title"
             onChange={handleChange}
           />
@@ -82,7 +82,7 @@ function TaskDescForm() {
             className="textfieldstyle"
             type="text"
             name="description"
-            value={taskData.description}
+            value={taskData.description || ""}
             placeholder="Enter task description"
             multiline
             rows={4}
@@ -134,6 +134,7 @@ function TaskDescForm() {
 export function Edit() {
   
   return (
+    <div className="editTaskPopUp">
     <center>
       <div className="edittaskForm" id = "popUpEditForm">
         <div className="editformContainer">
@@ -161,6 +162,7 @@ export function Edit() {
         </div>
       </div>
     </center>
+    </div>
   );
 }
 

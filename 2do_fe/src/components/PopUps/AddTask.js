@@ -54,7 +54,7 @@ function TaskDescForm(props) {
             className="textfieldstyle"
             type="text"
             name="title"
-            value={taskData.title}
+            value={taskData.title || ''}
             placeholder="Enter task title"
             onChange={handleChange}
           />
@@ -65,7 +65,7 @@ function TaskDescForm(props) {
             className="textfieldstyle"
             type="text"
             name="description"
-            value={taskData.description}
+            value={taskData.description || ''}
             placeholder="Enter task description"
             multiline
             rows={4}
@@ -77,7 +77,7 @@ function TaskDescForm(props) {
           <LocalizationProvider dateAdapter = {AdapterDayjs}>
             <DesktopDatePicker
               inputFormat = "MM/DD/YYYY"
-              value = {dateValue}
+              value = {dateValue || null}
               onChange = {handleDateChange}
               renderInput = {
                 (params) => 

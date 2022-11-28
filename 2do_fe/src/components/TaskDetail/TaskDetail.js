@@ -49,15 +49,20 @@ export default function TaskDetail({task}) {
           />
           <button
             className="pl-2 capitalize"
+            style={{textDecoration: task.status === "completed" ? 'line-through' : 'none'
+                    ,opacity: task.status === "completed" ? 0.3 : 1}}
             onClick = {() => {
-              openEditDesc(task, dispatch);
+              dispatch(taskActions.getTaskById(task._id));
+              openEditDesc();
               }}
           >
             {task.title}
           </button>
         </div>
         <div className="py-2 flex justify-center">
-          <div className="border w-24 h-10 text-center py-2">
+          <div className="border w-24 h-10 text-center py-2" 
+                style={{textDecoration: task.status === "completed" ? 'line-through' : 'none'
+                    ,opacity: task.status === "completed" ? 0.3 : 1}}>
             <Moment format="MMM DD">{task.dueDate}</Moment>
           </div>
         </div>
