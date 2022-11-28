@@ -1,4 +1,4 @@
-name: NodeJS with Webpack Backend
+name: NodeJS Backend with Jest Coverage
 
 on:
   push:
