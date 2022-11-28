@@ -5,8 +5,7 @@ import "./Header.css";
 import Tooltip from '@mui/material/Tooltip';
 import ColorLensTwoToneIcon from '@mui/icons-material/ColorLensTwoTone';
 import { SketchPicker } from "react-color";
-
-
+import "./index.css";
 
 
 function App() {
@@ -20,11 +19,11 @@ function App() {
   // destructuring rgba from state
   const { r, g, b, a } = sketchPickerColor;
   const [isPalletOpen, setPalletOpen] = useState(false)
+  // var colorstring = `rgb(${r},${g},${b})`;
 
   return (
-    
-    
     <React.Fragment>
+      <style>{`body { background-color: rgb(${r},${g},${b})}; }`}</style>
       <Tooltip title="Change backgrund color" placement="right">
       <ColorLensTwoToneIcon className="colorpicker" 
         onClick = {()=>{setPalletOpen(true)}}/>
