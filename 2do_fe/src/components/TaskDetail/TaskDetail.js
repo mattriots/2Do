@@ -13,17 +13,17 @@ function toggleStatus(task, dispatch) {
     taskActions.updateTaskById(
       {
         ...task,
-        status: task.status === "completed"
-          ? (task.status = "in progress")
-          : (task.status = "completed"),
+        status:
+          task.status === "completed"
+            ? (task.status = "in progress")
+            : (task.status = "completed"),
       },
       task._id
     )
   );
 }
 
-export default function TaskDetail({task}) {
-
+export default function TaskDetail({ task }) {
   const dispatch = useDispatch();
   const [isShownDelete, setIsShownDelete] = useState(false);
 
@@ -33,36 +33,42 @@ export default function TaskDetail({task}) {
         className="grid grid-cols-5 gap-3"
         onMouseEnter={() => {
           setIsShownDelete(true);
-          console.log("true mouse enter");
         }}
         onMouseLeave={() => {
           setIsShownDelete(false);
-          console.log("true mouse leave");
         }}
       >
         <div className="py-2 justify-self-start pl-5 flex col-span-2 w-80 items-center">
           <input
             type="image"
-            onClick={()=>toggleStatus(task, dispatch)}
+            onClick={() => toggleStatus(task, dispatch)}
             src={task.status === "completed" ? FinishIcon : ProgressIcon}
             alt="progress icon"
           />
           <button
             className="pl-2 capitalize"
-            style={{textDecoration: task.status === "completed" ? 'line-through' : 'none'
-                    ,opacity: task.status === "completed" ? 0.3 : 1}}
-            onClick = {() => {
+            style={{
+              textDecoration:
+                task.status === "completed" ? "line-through" : "none",
+              opacity: task.status === "completed" ? 0.3 : 1,
+            }}
+            onClick={() => {
               dispatch(taskActions.getTaskById(task._id));
               openEditDesc();
-              }}
+            }}
           >
             {task.title}
           </button>
         </div>
         <div className="py-2 flex justify-center">
-          <div className="border w-24 h-10 text-center py-2" 
-                style={{textDecoration: task.status === "completed" ? 'line-through' : 'none'
-                    ,opacity: task.status === "completed" ? 0.3 : 1}}>
+          <div
+            className="border w-24 h-10 text-center py-2"
+            style={{
+              textDecoration:
+                task.status === "completed" ? "line-through" : "none",
+              opacity: task.status === "completed" ? 0.3 : 1,
+            }}
+          >
             <Moment format="MMM DD">{task.dueDate}</Moment>
           </div>
         </div>
@@ -75,8 +81,9 @@ export default function TaskDetail({task}) {
             </div>
             <div className="pr-5">
               <RemoveCircleIcon
-                onClick={() => {dispatch(taskActions.deleteTask(task._id));
-                 }}
+                onClick={() => {
+                  dispatch(taskActions.deleteTask(task._id));
+                }}
               />
             </div>
           </div>
@@ -89,7 +96,6 @@ export default function TaskDetail({task}) {
         )}
       </div>
       <div className="mx-11 border-t-2"></div>
-      
-      </>
+    </>
   );
 }

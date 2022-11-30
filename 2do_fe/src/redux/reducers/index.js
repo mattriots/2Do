@@ -28,7 +28,9 @@ const taskReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        tasks: [...state.tasks,payload],
+        tasks: [...state.tasks, payload].sort((a, b) =>
+          a.dueDate > b.dueDate ? 1 : -1
+        ),
       };
 
     case types.DELETE_TASKS_SUCCESS:
