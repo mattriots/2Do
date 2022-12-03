@@ -8,21 +8,24 @@ For anyone who wants to maximize their work/life balance.
 2Do is an efficient and concise To-Do list that organizes daily tasks in an accessible and easy to read manner. Unlike Microsoft To Do, Our Product is lightweight, customizable, easy to manage and fun!
 
 ## `Project Setup Instructions`
+
 **Both Frontend and Backend need to be running to achieve running 2Do.**
+
 ### `Backend Setup`
+
 - First change the name of the `env` file to `.env` file in the root 2Do folder.
 - Open 2do_be folder on terminal/command line.
 - run the command `npm i`.
 - After installation, run the command `npm run dev` to start up the backend.
 - If successful, terminal will print `The mongoose is listening`.
 - The backend is now up and running on http://localhost:5001.
+
 ### `Frontend Setup Instructions`
+
 - Open 2do_fe folder on terminal/command line.
 - run the command `npm i`.
 - After installation, run the command `npm start` to start up the frontend.
 - If successful, 2Do webpage will be opened on http://localhost:3000/
-
-
 
 ## `Project Design`
 
@@ -72,6 +75,17 @@ React/JavaScript [https://airbnb.io/javascript/react/]
   - ? Which package manager do you want to use? >**npm**
 - '.eslintrc.json' will be created
 - Replace the content in the '.eslintrc.json' that was created with the content in '.eslintrc.json' file the that is in the root folder of the repository by copy/paste.
+
+### Setup database:
+
+- create a file named .env
+- add .env to .gitignore
+- Update the user and password fields below with your mongodb atlas user and password
+
+MONGO_USER=XXXXX
+MONGO_PWD=XXXXX
+MONGO_DB=XXXXX
+MONGO_CLUSTER=XXXXX
 
 ## `License`
 
