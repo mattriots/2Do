@@ -2,7 +2,7 @@ import * as types from "../constants/task.constants";
 import api from "../../api";
 import { toast } from "react-toastify";
 
-//get all task
+//Being used
 const getAllTasks = (status, dueDate) => async (dispatch) => {
   dispatch({ type: types.GET_ALL_TASKS_REQUEST });
   try {
@@ -24,6 +24,7 @@ const getAllTasks = (status, dueDate) => async (dispatch) => {
   }
 };
 
+//Being used
 const addTask = (taskData) => async (dispatch) => {
   dispatch({ type: types.ADD_TASKS_REQUEST, payload: null });
   try {
@@ -116,7 +117,7 @@ const getTaskById = (id) => async (dispatch) => {
   }
 };
 
-//Not being used yet
+//Being used
 const updateTaskById = (taskData, id) => async (dispatch) => {
   dispatch({ type: types.UPDATE_TASKS_REQUEST });
   try {
