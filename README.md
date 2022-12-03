@@ -7,6 +7,23 @@
 For anyone who wants to maximize their work/life balance.
 2Do is an efficient and concise To-Do list that organizes daily tasks in an accessible and easy to read manner. Unlike Microsoft To Do, Our Product is lightweight, customizable, easy to manage and fun!
 
+## `Project Setup Instructions`
+**Both Frontend and Backend need to be running to achieve running 2Do.**
+### `Backend Setup`
+- First change the name of the `env` file to `.env` file in the root 2Do folder.
+- Open 2do_be folder on terminal/command line.
+- run the command `npm i`.
+- After installation, run the command `npm run dev` to start up the backend.
+- If successful, terminal will print `The mongoose is listening`.
+- The backend is now up and running on http://localhost:5001.
+### `Frontend Setup Instructions`
+- Open 2do_fe folder on terminal/command line.
+- run the command `npm i`.
+- After installation, run the command `npm start` to start up the frontend.
+- If successful, 2Do webpage will be opened on http://localhost:3000/
+
+
+
 ## `Project Design`
 
 https://www.figma.com/file/uHDBQEXPRQJdATXyNeKNJw/2Do_307?node-id=0%3A1
