@@ -2,7 +2,10 @@ import * as types from "../constants/task.constants";
 import api from "../../api";
 import { toast } from "react-toastify";
 
-//get all task
+/* ACTIONS OF 2Do */
+/* Connects to the Backend for each action and returns a payload/response from backend */
+
+//get all task from the backend data storage
 const getAllTasks = (status, dueDate) => async (dispatch) => {
   dispatch({ type: types.GET_ALL_TASKS_REQUEST });
   try {
@@ -24,6 +27,7 @@ const getAllTasks = (status, dueDate) => async (dispatch) => {
   }
 };
 
+//Add a task and Post it to the backend data storage
 const addTask = (taskData) => async (dispatch) => {
   dispatch({ type: types.ADD_TASKS_REQUEST, payload: null });
   try {
@@ -63,7 +67,7 @@ const addTask = (taskData) => async (dispatch) => {
   }
 };
 
-//Being used
+//Delete a Task by id in the backend data storage
 const deleteTask = (id) => async (dispatch) => {
   dispatch({ type: types.DELETE_TASKS_REQUEST });
   try {
@@ -100,7 +104,7 @@ const deleteTask = (id) => async (dispatch) => {
   }
 };
 
-//Being used
+//Get a single task by id from the backend data storage
 const getTaskById = (id) => async (dispatch) => {
   dispatch({ type: types.GET_SINGLE_TASKS_REQUEST });
   try {
@@ -116,7 +120,7 @@ const getTaskById = (id) => async (dispatch) => {
   }
 };
 
-//Not being used yet
+//Update the changes made to the data of task selected by id in the backend
 const updateTaskById = (taskData, id) => async (dispatch) => {
   dispatch({ type: types.UPDATE_TASKS_REQUEST });
   try {
