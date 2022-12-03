@@ -1,5 +1,6 @@
 import * as types from "../constants/task.constants";
 import api from "../../api";
+import { toast } from "react-toastify";
 
 //get all task
 const getAllTasks = (status, dueDate) => async (dispatch) => {
@@ -26,8 +27,6 @@ const getAllTasks = (status, dueDate) => async (dispatch) => {
 const addTask = (taskData) => async (dispatch) => {
   dispatch({ type: types.ADD_TASKS_REQUEST, payload: null });
   try {
-    console.log("Add Tasks", taskData);
-    //>>>>ASK ABOUT POST ROUTE<<<<<//
     const res = await api.post(`/tasks`, {
       status: taskData.status,
       title: taskData.title,
@@ -37,10 +36,30 @@ const addTask = (taskData) => async (dispatch) => {
 
     dispatch({
       type: types.ADD_TASKS_SUCCESS,
-      payload: res.data.task_list,
+      payload: res.data,
+    });
+    toast.success(" Add Task Success!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
     });
   } catch (error) {
     dispatch({ type: types.ADD_TASKS_FAILURE, payload: error });
+    toast.error("Add Task Failed!!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   }
 };
 
@@ -56,8 +75,28 @@ const deleteTask = (id) => async (dispatch) => {
       type: types.DELETE_TASKS_SUCCESS,
       id: id,
     });
+    toast.success(" Delete Task Success!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   } catch (error) {
     dispatch({ type: types.DELETE_TASKS_FAILURE, payload: error });
+    toast.error("Delete Task Failed!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   }
 };
 
@@ -72,7 +111,6 @@ const getTaskById = (id) => async (dispatch) => {
       type: types.GET_SINGLE_TASKS_SUCCESS,
       payload: res.data.single_task,
     });
-    console.log(res);
   } catch (error) {
     dispatch({ type: types.GET_SINGLE_TASKS_FAILURE, payload: error });
   }
@@ -96,9 +134,29 @@ const updateTaskById = (taskData, id) => async (dispatch) => {
       type: types.UPDATE_TASKS_SUCCESS,
       payload: res.data.single_task,
     });
-    console.log(res);
+
+    toast.success(" Update Task Success!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   } catch (error) {
     dispatch({ type: types.UPDATE_TASKS_FAILURE, payload: error });
+    toast.error("Update Task Failed!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   }
 };
 

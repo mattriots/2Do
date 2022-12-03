@@ -18,11 +18,19 @@ const taskReducer = (state = initialState, action) => {
       return { ...state, loading: true };
 
     case types.GET_ALL_TASKS_SUCCESS:
-    case types.ADD_TASKS_SUCCESS:
       return {
         ...state,
         loading: false,
         tasks: payload,
+      };
+
+    case types.ADD_TASKS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        tasks: [...state.tasks, payload].sort((a, b) =>
+          a.dueDate > b.dueDate ? 1 : -1
+        ),
       };
 
     case types.DELETE_TASKS_SUCCESS:

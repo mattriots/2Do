@@ -1,19 +1,20 @@
 #content {
-  width: 80%;
-  margin: 0 auto;
+  width: 85%;
+  margin: 0px auto;
   background-color: white;
+  box-shadow: rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px;
 }
 
-.addTaskPopUp {
+.taskDetailsPopUp {
   position: absolute;
-  top: 10px;
+  top: 50px;
   width: 100%;
   left: 0;
 }
 
 .editTaskPopUp {
   position: absolute;
-  top: 10px;
+  top: 50px;
   width: 100%;
   left: 0;
 }
