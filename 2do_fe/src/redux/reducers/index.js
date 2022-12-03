@@ -7,6 +7,7 @@ const initialState = {
   singleTask: null,
 };
 
+//updates the stores overall state
 const taskReducer = (state = initialState, action) => {
   const { type, payload, id } = action;
   switch (type) {
