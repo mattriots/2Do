@@ -5,6 +5,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import taskActions from "../../redux/actions/task.actions";
 
+//Function to Filter task by status
 function ViewTaskBy() {
   const dispatch = useDispatch();
   const [filter, setFilter] = React.useState("All Tasks");
@@ -36,6 +37,8 @@ function ViewTaskBy() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
+          {/* Display Drop down list of how user can view the task list */}
+          {/* User will be able to view: All task, only completed task or tasks in progress */}
           <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="py-1">
               <Menu.Item>
