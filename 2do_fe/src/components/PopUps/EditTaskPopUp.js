@@ -9,17 +9,13 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 
+//Component for edit task pop up
 
-
-export function openEditDesc() {
-  //await dispatch(taskActions.getTaskById(task._id));
-  document.getElementById("popUpEditForm").style.display = "block";
-}
+//User will be able to edit task details and submit form
 
 function closeTaskDesc() {
   document.getElementById("popUpEditForm").style.display = "none";
 }
-
 
 function TaskDescForm() {
   //use selector to get current task
@@ -29,6 +25,7 @@ function TaskDescForm() {
 
   const dispatch = useDispatch();
 
+  //initial state of the task details
   const [taskData, setTaskData] = useState({
     status: "",
     title: "",
@@ -44,6 +41,7 @@ function TaskDescForm() {
   };
 
   //only display tasks not null
+  //set task data with specific task details
   useEffect(() => {
     setTaskData({
       status: singleTask?.status,
@@ -53,10 +51,12 @@ function TaskDescForm() {
     });
   }, [singleTask]);
 
+  //handle state change of the task data on user input 
   const handleChange = (e) => {
     setTaskData({ ...taskData, [e.target.name]: e.target.value });
   };
   
+  //on submittion of the form, dispatch task data for the task being edited by the user
   const handleSubmit = () => {
     closeTaskDesc;
     dispatch(taskActions.updateTaskById(taskData, singleTask._id));
@@ -66,6 +66,7 @@ function TaskDescForm() {
     <center>
       <div id="Form-container">
         <form onSubmit={handleSubmit}>
+          {/* TITLE INPUT*/}
           <label htmlFor="title">Title</label>
           <TextField
             required
@@ -77,6 +78,7 @@ function TaskDescForm() {
             onChange={handleChange}
           />
 
+          {/* DESCRIPTION INPUT */}
           <label htmlFor="description">Description</label>
           <TextField
             className="textfieldstyle"
@@ -109,12 +111,14 @@ function TaskDescForm() {
           </LocalizationProvider>
 
           <div className="Button-container">
+            {/* EDIT TASK SUBMIT BUTTON */}
             <button
               type = "submit"
               className="Add-button"
             >
               Confirm
             </button>
+            {/* Button delete the selected task */}
             <button
               className="Cancel-button"
               onClick={() => {
@@ -134,6 +138,7 @@ function TaskDescForm() {
 export function Edit() {
   
   return (
+    /* POP UP FORM TO EDIT TASK */
     <div className="editTaskPopUp">
     <center>
       <div className="edittaskForm" id = "popUpEditForm">

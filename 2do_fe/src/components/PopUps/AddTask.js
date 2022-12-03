@@ -10,8 +10,13 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
+//Add Task Pop up screen
+
+//Component for user changeable form
+//User will be able to add task details and submit form
 function TaskDescForm(props) {
   
+  //initial state of the task details
   const [taskData, setTaskData] = useState({
     status: "in progress",
     title: "",
@@ -23,6 +28,7 @@ function TaskDescForm(props) {
 
   const dispatch = useDispatch();
 
+  //handle state change of the date on user input 
   const handleDateChange = (newDateValue) => {
     setDate(newDateValue);
     setTaskData({
@@ -30,12 +36,14 @@ function TaskDescForm(props) {
       dueDate: newDateValue,});
   };
 
+  //handle state change of the task data on user input 
   const handleChange = (e) => {
     setTaskData({ 
       ...taskData, [e.target.name]: e.target.value,
      });
   };
 
+  //on submittion of the form, dispatch task data entered by the user
   const handleSubmit = (e) => {
     e.preventDefault();
     props.setTrigger_1(false);
@@ -93,12 +101,14 @@ function TaskDescForm(props) {
           
 
           <div className="Button-container">
+            {/* ADD TASK SUBMIT BUTTON */}
             <button
               type = "submit"
               className="Add-button"
             >
               Confirm
             </button>
+            {/* CLOSE FORM WITHOUT DOING ANYTHING */}
             <button onClick={()=>props.setTrigger_1(false)} className="Cancel-button">
               Cancel
             </button>
@@ -110,6 +120,7 @@ function TaskDescForm(props) {
 }
 
 function AddTask() {
+  //inital state of Add Task pop up screen
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -119,17 +130,19 @@ function AddTask() {
           <img
             src={AddTaskIcon}
             alt="Add task icon"
+            //change state to open form on click
             onClick = {()=>{
-              setIsOpen(true);
+              setIsOpen(true); 
               }}
             className="cursor-pointer"
           />
         </div>
       </div>
       
+      {/* POP UP FORM TO ADD TASK */}
+      {/* Open PopUp if isOpen = true */}
       { isOpen ? (
       <div className="taskDetailsPopUp">
-      {/* <PopUp trigger={isOpen} setTrigger={setIsOpen}> */}
         <center>
         <div className="taskForm">
           <div className="formContainer">

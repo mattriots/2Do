@@ -1,0 +1,7 @@
+# change the file name to .env
+# add .env to .gitignore
+# Update the user and password fields below with your mongodb atlas user and password
+MONGO_USER=2Do307
+MONGO_PWD=FvJ6rziTPlrk5ejc
+MONGO_DB=Tasks
+MONGO_CLUSTER=2docluster.gufnwbj.mongodb.net

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 
+//Component for task status image (complete/in progress)
+
 const Status = styled.div`
   background: ${(props) =>
     props.variant === "complete" ? "#63de86" : "#df554c"};
@@ -17,8 +19,8 @@ const Status = styled.div`
   color: white;
 `;
 
-function StageButton(complete, text) {
+function StatusButton(complete, text) {
   return <Status variant={complete}>{text}</Status>;
 }
 
-export default StageButton;
+export default StatusButton;
